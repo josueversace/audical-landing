@@ -472,6 +472,19 @@ function initFormHandling() {
       `;
     }
 
+    // Determinar versión de landing según ruta
+    let landingVersion = 'Principal / Orgánico (Web Directa)';
+    const currentPath = window.location.pathname.toLowerCase();
+    const currentHref = window.location.href.toLowerCase();
+
+    if (currentPath.includes('/otc') || currentHref.includes('otc')) {
+      landingVersion = 'Emocional / Familiar (Ads OTC)';
+    } else if (currentPath.includes('/ric') || currentHref.includes('ric')) {
+      landingVersion = 'Técnico / Clínico (Ads RIC)';
+    } else {
+      landingVersion = 'Principal / Orgánico (Web Directa)';
+    }
+
     // 1. Enviar datos a n8n en segundo plano
     const leadPayload = {
       name,
@@ -482,6 +495,10 @@ function initFormHandling() {
       package: selectedPkg,
       packageText,
       price: packagePrice,
+      landingVersion,
+      landingUrl: window.location.href,
+      landingPath: window.location.pathname,
+      referrer: document.referrer || 'Directo',
       timestamp: new Date().toISOString(),
       source: 'audical.shop',
       url: window.location.href,
