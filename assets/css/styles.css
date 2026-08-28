@@ -1,0 +1,292 @@
+/* ==========================================================================
+   Tomore 5118L RIC - Premium Medical Landing Page Styles
+   Diseño de Alta Conversión - Mercado Peruano
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root {
+  --primary: #0f172a;       /* Slate 900 */
+  --primary-blue: #1e40af;  /* Blue 800 */
+  --primary-accent: #0284c7;/* Sky 600 */
+  --teal-accent: #0d9488;   /* Teal 600 */
+  --teal-light: #ccfbf1;    /* Teal 100 */
+  --cta-green: #16a34a;     /* Emerald 600 */
+  --cta-hover: #15803d;     /* Emerald 700 */
+  --cta-pulse: rgba(22, 163, 74, 0.4);
+  --bg-clinical: #f8fafc;   /* Slate 50 */
+  --card-border: #e2e8f0;   /* Slate 200 */
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --peru-red: #d90429;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Pulse animation for High-converting CTA buttons */
+@keyframes cta-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
+
+.btn-pulse {
+  animation: cta-pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Subtle Shimmer Effect for Urgency Badges */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-badge {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Medical Trust Badges & Glassmorphism */
+.glass-medical {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-card-glow {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 253, 250, 0.8) 100%);
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.08);
+}
+
+/* Realistic Digital Display (Case Battery screen preview) */
+.digital-display {
+  font-family: 'Courier New', Courier, monospace;
+  background: #09090b;
+  color: #22c55e;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  border: 2px solid #27272a;
+  border-radius: 6px;
+}
+
+/* Sound Simulator Equalizer Waves */
+@keyframes wave-bounce {
+  0%, 100% { height: 15%; }
+  50% { height: 95%; }
+}
+
+.sound-wave-bar {
+  animation: wave-bounce 1.2s ease-in-out infinite alternate;
+}
+
+.sound-wave-bar:nth-child(2) { animation-delay: 0.2s; }
+.sound-wave-bar:nth-child(3) { animation-delay: 0.4s; }
+.sound-wave-bar:nth-child(4) { animation-delay: 0.1s; }
+.sound-wave-bar:nth-child(5) { animation-delay: 0.3s; }
+.sound-wave-bar:nth-child(6) { animation-delay: 0.5s; }
+.sound-wave-bar:nth-child(7) { animation-delay: 0.25s; }
+
+/* Custom Checkmark list */
+.check-item {
+  position: relative;
+  padding-left: 2rem;
+}
+.check-item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+  background-color: #dcfce7;
+  color: #15803d;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+/* Comparison Table Styling */
+.badge-winner {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: white;
+}
+
+/* Live Purchase Toast Popup */
+.purchase-toast {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(120%);
+  opacity: 0;
+}
+
+.purchase-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Sticky Bottom Mobile Bar */
+.sticky-mobile-cta {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* FAQ Accordion Transitions */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease-out, opacity 0.25s ease-out;
+  opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ===== Testimonial Auto-Scroll Ticker ===== */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.testimonial-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 45s linear infinite;
+}
+
+.testimonial-ticker:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-card-ticker {
+  flex-shrink: 0;
+  width: 340px;
+}
+
+@media (min-width: 640px) {
+  .testimonial-card-ticker {
+    width: 380px;
+  }
+}
+
+/* ===== Hearing Loss Simulator (Philips-Style Clean Audio Player) ===== */
+.sim-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+.sim-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: #0d9488;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.4);
+  cursor: grab;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.sim-range-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.15);
+  background: #0f766e;
+}
+
+.sim-range-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: #0d9488;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.4);
+  cursor: grab;
+  transition: transform 0.15s ease;
+}
+
+@keyframes sim-pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.sim-play-pulse {
+  animation: sim-pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
