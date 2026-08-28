@@ -190,7 +190,7 @@ function initSoundSimulator() {
 
   function getAudioSrc(scenario, levelIdx) {
     const levelName = levels[levelIdx] || 'normal';
-    return `assets/audio/${scenario}-${levelName}.mp3`;
+    return `/assets/audio/${scenario}-${levelName}.mp3`;
   }
 
   function updateAudioSource(preserveTime = true) {
