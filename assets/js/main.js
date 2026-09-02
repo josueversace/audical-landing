@@ -1,5 +1,5 @@
 /**
- * Audical Micro-RIC 16X - Interactive Controller
+ * Audivox Micro-RIC 16X - Interactive Controller
  * Landing Page de Alta Conversión (Perú)
  */
 
@@ -29,19 +29,19 @@ function initCountdownTimer() {
   let totalSeconds = 18 * 60 + 45;
 
   // Try retrieving saved timestamp from session storage
-  const savedEndTime = sessionStorage.getItem('audical_offer_end');
+  const savedEndTime = sessionStorage.getItem('audivox_offer_end');
   const now = Math.floor(Date.now() / 1000);
 
   if (savedEndTime && savedEndTime > now) {
     totalSeconds = savedEndTime - now;
   } else {
-    sessionStorage.setItem('audical_offer_end', now + totalSeconds);
+    sessionStorage.setItem('audivox_offer_end', now + totalSeconds);
   }
 
   function updateTimer() {
     if (totalSeconds <= 0) {
       totalSeconds = 15 * 60; // reset to 15 min
-      sessionStorage.setItem('audical_offer_end', Math.floor(Date.now() / 1000) + totalSeconds);
+      sessionStorage.setItem('audivox_offer_end', Math.floor(Date.now() / 1000) + totalSeconds);
     }
 
     const minutes = Math.floor(totalSeconds / 60);
@@ -329,7 +329,7 @@ function initSoundSimulator() {
    4. Lead & Order Form Handling with WhatsApp Checkout Flow
    ========================================================================== */
 function initFormHandling() {
-  const orderForm = document.getElementById('audical-order-form');
+  const orderForm = document.getElementById('audivox-order-form');
   const modal = document.getElementById('order-success-modal');
   const closeModalBtn = document.getElementById('close-modal-btn');
   const confirmWhatsappBtn = document.getElementById('modal-whatsapp-confirm-btn');
@@ -442,7 +442,7 @@ function initFormHandling() {
     // Generate WhatsApp URL with prefilled order
     const whatsappNumber = "51987654321"; // Peru business WhatsApp number
     const whatsappMessage = encodeURIComponent(
-      `👋 ¡Hola Audical! Acabo de registrar mi pedido en la web con Pago Contra Entrega:\n\n` +
+      `👋 ¡Hola Audivox! Acabo de registrar mi pedido en la web con Pago Contra Entrega:\n\n` +
       `👤 *Cliente:* ${name}\n` +
       `📱 *Celular:* ${phone}\n` +
       `📍 *Ciudad / Provincia:* ${city}\n` +
@@ -500,12 +500,12 @@ function initFormHandling() {
       landingPath: window.location.pathname,
       referrer: document.referrer || 'Directo',
       timestamp: new Date().toISOString(),
-      source: 'audical.shop',
+      source: 'audivox.shop',
       url: window.location.href,
       userAgent: navigator.userAgent
     };
 
-    const N8N_WEBHOOK_URL = 'https://n8n.conecta2.lat/webhook/audical-nuevo-lead';
+    const N8N_WEBHOOK_URL = 'https://n8n.conecta2.lat/webhook/audivox-nuevo-lead';
 
     try {
       await fetch(N8N_WEBHOOK_URL, {
@@ -555,7 +555,18 @@ function initRecentBuyerToasts() {
   const toastContainer = document.getElementById('recent-buyer-toast');
   if (!toastContainer) return;
 
-  const buyers = [
+  const isWaitlist = document.getElementById('audivox-waitlist-form') !== null || window.location.pathname.includes('espera');
+
+  const buyers = isWaitlist ? [
+    { name: "Carlos M.", city: "Jaén, Cajamarca", time: "hace 3 min", action: "Se unió a la lista de espera" },
+    { name: "Rosa Elena V.", city: "San Borja, Lima", time: "hace 6 min", action: "Reservó su cupo con 50% DCTO" },
+    { name: "Jorge L. P.", city: "Arequipa", time: "hace 11 min", action: "Se unió a la lista de espera" },
+    { name: "Gladys R.", city: "Trujillo", time: "hace 16 min", action: "Reservó su cupo con 50% DCTO" },
+    { name: "Víctor H.", city: "Chiclayo", time: "hace 22 min", action: "Se unió a la lista de espera" },
+    { name: "María Isabel C.", city: "Cusco", time: "hace 29 min", action: "Reservó su cupo con 50% DCTO" },
+    { name: "Alfonso D.", city: "Huancayo", time: "hace 37 min", action: "Se unió a la lista de espera" },
+    { name: "Teresa S.", city: "Piura", time: "hace 44 min", action: "Reservó su cupo con 50% DCTO" }
+  ] : [
     { name: "Carlos M.", city: "Jaén, Cajamarca", time: "hace 4 min", pkg: "1 Kit Micro-RIC" },
     { name: "Rosa Elena V.", city: "San Borja, Lima", time: "hace 8 min", pkg: "1 Kit Micro-RIC" },
     { name: "Jorge L. P.", city: "Arequipa", time: "hace 14 min", pkg: "Pack Familiar (2 Kits)" },
@@ -570,16 +581,20 @@ function initRecentBuyerToasts() {
 
   function showNextToast() {
     const buyer = buyers[currentIndex];
+    const subtext = isWaitlist
+      ? `<span class="text-teal-700 font-semibold">${buyer.action}</span> · <span class="text-slate-400 font-normal">${buyer.time}</span>`
+      : `Pidió <span class="text-emerald-700 font-semibold">${buyer.pkg}</span> · <span class="text-slate-400 font-normal">${buyer.time}</span>`;
+
     toastContainer.innerHTML = `
       <div class="flex items-center gap-2.5 bg-white/95 backdrop-blur-md px-3 py-2 rounded-xl shadow-lg border border-slate-200/90 text-xs">
-        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+        <div class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center flex-shrink-0">
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
         <div class="flex-1 min-w-0 leading-tight">
           <p class="font-bold text-slate-900 text-[11px] truncate">${buyer.name} <span class="text-slate-500 font-normal">en ${buyer.city}</span></p>
-          <p class="text-[10px] text-slate-600 font-medium truncate">Pidió <span class="text-emerald-700 font-semibold">${buyer.pkg}</span> · <span class="text-slate-400 font-normal">${buyer.time}</span></p>
+          <p class="text-[10px] text-slate-600 font-medium truncate">${subtext}</p>
         </div>
         <button class="text-slate-400 hover:text-slate-600 p-0.5 text-xs leading-none" onclick="this.closest('#recent-buyer-toast').classList.remove('show')">✕</button>
       </div>

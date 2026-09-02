@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://audical.shop/sitemap.xml
+Sitemap: https://audivox.shop/sitemap.xml

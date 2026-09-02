@@ -5,8 +5,41 @@
   "redirects": [
     {
       "source": "/version-b",
-      "destination": "/ric",
-      "permanent": true
+      "destination": "/ric/espera",
+      "permanent": false
+    },
+    {
+      "source": "/ric",
+      "destination": "/ric/espera",
+      "permanent": false,
+      "missing": [
+        {
+          "type": "query",
+          "key": "preview"
+        }
+      ]
+    },
+    {
+      "source": "/otc",
+      "destination": "/espera",
+      "permanent": false,
+      "missing": [
+        {
+          "type": "query",
+          "key": "preview"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "/ric/espera",
+      "permanent": false,
+      "missing": [
+        {
+          "type": "query",
+          "key": "preview"
+        }
+      ]
     }
   ],
   "headers": [

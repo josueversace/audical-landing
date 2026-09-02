@@ -4,17 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   
+  <!-- Pre-launch Redirection Safeguard: En producción redirige a lista de espera a menos que tenga ?preview=true o esté en local -->
+  <script>
+    (function () {
+      var h = window.location.hostname;
+      var isDev = h === 'localhost' || h === '127.0.0.1' || h.endsWith('.local') || window.location.port !== '';
+      var hasPreview = window.location.search.indexOf('preview') !== -1;
+      if (!isDev && !hasPreview) {
+        window.location.replace('/espera');
+      }
+    })();
+  </script>
+
   <!-- Primary Meta Tags -->
-  <title>Audical Micro-RIC 16X | Audífonos Digitales con Chip IA en Perú - Pago Contra Entrega</title>
-  <meta name="title" content="Audical Micro-RIC 16X | Audífonos Digitales con Chip IA en Perú - Pago Contra Entrega">
-  <meta name="description" content="Recupera la claridad de escuchar a tu familia con los audífonos digitales Audical Micro-RIC 16X. Chip digital de IA de 16 canales, calibración médica por App en casa, 52h de batería y Pago Contra Entrega en todo el Perú con Envío 100% Gratis.">
-  <meta name="keywords" content="audifonos para sordera peru, audifonos digitales recargables lima, audical micro-ric 16x, audifonos bluetooth adultos mayores peru, aparato auditivo precio peru, audifonos contra entrega lima, audical.shop">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Audivox Micro-RIC 16X | Audífonos Digitales con Chip IA en Perú - Pago Contra Entrega</title>
+  <meta name="title" content="Audivox Micro-RIC 16X | Audífonos Digitales con Chip IA en Perú - Pago Contra Entrega">
+  <meta name="description" content="Recupera la claridad de escuchar a tu familia con los audífonos digitales Audivox Micro-RIC 16X. Chip digital de IA de 16 canales, calibración médica por App en casa, 52h de batería y Pago Contra Entrega en todo el Perú con Envío 100% Gratis.">
+  <meta name="keywords" content="audifonos para sordera peru, audifonos digitales recargables lima, audivox micro-ric 16x, audifonos bluetooth adultos mayores peru, aparato auditivo precio peru, audifonos contra entrega lima, audivox.shop">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="language" content="Spanish">
   <meta name="geo.region" content="PE">
   <meta name="geo.placename" content="Lima, Peru">
   <meta name="theme-color" content="#0f172a">
-  <link rel="canonical" href="https://audical.shop/otc">
+  <link rel="canonical" href="https://audivox.shop/otc">
 
   <!-- Creator / Developer Attribution (Conecta2 Lat) -->
   <meta name="author" content="Conecta2 Lat - https://conecta2.lat">
@@ -24,24 +36,24 @@
 
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://audical.shop/">
-  <meta property="og:site_name" content="Audical Perú | audical.shop">
+  <meta property="og:url" content="https://audivox.shop/">
+  <meta property="og:site_name" content="Audivox Perú | audivox.shop">
   <meta property="og:locale" content="es_PE">
-  <meta property="og:title" content="Audical Micro-RIC 16X | Audífonos Digitales con Chip IA en Perú">
+  <meta property="og:title" content="Audivox Micro-RIC 16X | Audífonos Digitales con Chip IA en Perú">
   <meta property="og:description" content="Recupera la claridad de conversar con tu familia. Chip digital de 16 canales, Bluetooth 5.3, calibración médica por App móvil y Pago Contra Entrega en todo el Perú.">
-  <meta property="og:image" content="https://audical.shop/assets/images/hero_family.webp">
-  <meta property="og:image:secure_url" content="https://audical.shop/assets/images/hero_family.webp">
+  <meta property="og:image" content="https://audivox.shop/assets/images/hero_family.webp">
+  <meta property="og:image:secure_url" content="https://audivox.shop/assets/images/hero_family.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Audical Micro-RIC 16X Audífonos Digitales en Perú">
+  <meta property="og:image:alt" content="Audivox Micro-RIC 16X Audífonos Digitales en Perú">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://audical.shop/">
-  <meta name="twitter:title" content="Audical Micro-RIC 16X | Audífonos Digitales con Chip IA en Perú">
+  <meta name="twitter:url" content="https://audivox.shop/">
+  <meta name="twitter:title" content="Audivox Micro-RIC 16X | Audífonos Digitales con Chip IA en Perú">
   <meta name="twitter:description" content="Audífonos digitales con chip de IA de 16 canales y calibración médica por App en casa. Pago Contra Entrega y Envío Gratis en Perú.">
-  <meta name="twitter:image" content="https://audical.shop/assets/images/hero_family.webp">
-  <meta name="twitter:image:alt" content="Audical Micro-RIC 16X">
+  <meta name="twitter:image" content="https://audivox.shop/assets/images/hero_family.webp">
+  <meta name="twitter:image:alt" content="Audivox Micro-RIC 16X">
 
   <!-- Schema.org JSON-LD Structured Data for Google Rich Results -->
   <script type="application/ld+json">
@@ -50,22 +62,22 @@
     "@graph": [
       {
         "@type": "Product",
-        "@id": "https://audical.shop/#product",
-        "name": "Audical Micro-RIC 16X Audífonos Digitales",
+        "@id": "https://audivox.shop/#product",
+        "name": "Audivox Micro-RIC 16X Audífonos Digitales",
         "image": [
-          "https://audical.shop/assets/images/hero_family.webp",
-          "https://audical.shop/assets/images/binaural_silvergray_trans.webp",
-          "https://audical.shop/assets/images/audical_binaural_trans.webp"
+          "https://audivox.shop/assets/images/hero_family.webp",
+          "https://audivox.shop/assets/images/binaural_silvergray_trans.webp",
+          "https://audivox.shop/assets/images/audivox_binaural_trans.webp"
         ],
         "description": "Audífonos digitales Micro-RIC de 16 canales con chip de IA para procesamiento acústico, calibración médica por App móvil en casa, Bluetooth 5.3, batería recargable de 52h totales y estuche con pantalla LED.",
-        "sku": "AUDICAL-MR16X-PE",
+        "sku": "AUDIVOX-MR16X-PE",
         "brand": {
           "@type": "Brand",
-          "name": "Audical"
+          "name": "Audivox"
         },
         "offers": {
           "@type": "Offer",
-          "url": "https://audical.shop/#pedido",
+          "url": "https://audivox.shop/#pedido",
           "priceCurrency": "PEN",
           "price": "1990.00",
           "priceValidUntil": "2026-12-31",
@@ -73,8 +85,8 @@
           "itemCondition": "https://schema.org/NewCondition",
           "seller": {
             "@type": "Organization",
-            "name": "Audical Perú",
-            "url": "https://audical.shop"
+            "name": "Audivox Perú",
+            "url": "https://audivox.shop"
           },
           "shippingDetails": {
             "@type": "OfferShippingDetails",
@@ -108,9 +120,9 @@
       },
       {
         "@type": "MedicalWebPage",
-        "@id": "https://audical.shop/#medicalwebpage",
-        "url": "https://audical.shop/",
-        "name": "Audical Micro-RIC 16X - Tecnología de Audición Digital para Hipoacusia Leve a Moderada",
+        "@id": "https://audivox.shop/#medicalwebpage",
+        "url": "https://audivox.shop/",
+        "name": "Audivox Micro-RIC 16X - Tecnología de Audición Digital para Hipoacusia Leve a Moderada",
         "about": {
           "@type": "MedicalCondition",
           "name": "Pérdida auditiva neurosensorial y conductiva leve a moderada"
@@ -118,10 +130,10 @@
       },
       {
         "@type": "Organization",
-        "@id": "https://audical.shop/#organization",
-        "name": "Audical Perú",
-        "url": "https://audical.shop",
-        "logo": "https://audical.shop/assets/images/logo_audical_desktop.webp",
+        "@id": "https://audivox.shop/#organization",
+        "name": "Audivox Perú",
+        "url": "https://audivox.shop",
+        "logo": "https://audivox.shop/assets/images/logo_audivox_desktop.webp",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+51900000000",
@@ -140,7 +152,7 @@
       },
       {
         "@type": "FAQPage",
-        "@id": "https://audical.shop/#faq",
+        "@id": "https://audivox.shop/#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -228,7 +240,7 @@
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 text-center font-medium">
         <div class="flex items-center gap-2">
           <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider animate-pulse">
-            Stock Oficial Audical en Perú
+            Stock Oficial Audivox en Perú
           </span>
           <span class="text-slate-200">50% de Descuento por Lanzamiento Directo de Importación</span>
         </div>
@@ -247,11 +259,11 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between">
         
         <!-- Brand Logo (Desktop: Full with Imagotype | Mobile: Wordmark only) -->
-        <a href="#" class="flex items-center group py-0.5" aria-label="Audical.shop Inicio">
+        <a href="#" class="flex items-center group py-0.5" aria-label="Audivox.shop Inicio">
           <!-- Desktop Logo (Full with ear wave imagotype) -->
-          <img src="/assets/images/logo_audical_desktop.webp" alt="Audical.shop" class="hidden sm:block h-8 sm:h-9 w-auto object-contain group-hover:opacity-95 transition-opacity">
+          <img src="/assets/images/logo_audivox_desktop.webp" alt="Audivox.shop" class="hidden sm:block h-8 sm:h-9 w-auto object-contain group-hover:opacity-95 transition-opacity">
           <!-- Mobile Logo (Wordmark only) -->
-          <img src="/assets/images/logo_audical_mobile.webp" alt="Audical.shop" class="sm:hidden h-7 w-auto object-contain group-hover:opacity-95 transition-opacity">
+          <img src="/assets/images/logo_audivox_mobile.webp" alt="Audivox.shop" class="sm:hidden h-7 w-auto object-contain group-hover:opacity-95 transition-opacity">
         </a>
 
         <!-- Quick Trust Badges (Desktop) -->
@@ -476,7 +488,7 @@
               <button type="button" onclick="document.getElementById('slide4-spec-img-mobile').src='/assets/images/binaural_silvergray_trans.webp'; document.getElementById('slide4-spec-img').src='/assets/images/binaural_silvergray_trans.webp'" class="px-2.5 py-0.5 rounded-md bg-slate-900 text-white text-[10px] font-bold border border-slate-700 shadow-sm">
                 Titanium Silver
               </button>
-              <button type="button" onclick="document.getElementById('slide4-spec-img-mobile').src='/assets/images/audical_binaural_trans.webp'; document.getElementById('slide4-spec-img').src='/assets/images/audical_binaural_trans.webp'" class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-bold border border-amber-300 shadow-sm">
+              <button type="button" onclick="document.getElementById('slide4-spec-img-mobile').src='/assets/images/audivox_binaural_trans.webp'; document.getElementById('slide4-spec-img').src='/assets/images/audivox_binaural_trans.webp'" class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-bold border border-amber-300 shadow-sm">
                 Beige Piel
               </button>
             </div>
@@ -582,7 +594,7 @@
                     <button type="button" onclick="document.getElementById('slide4-spec-img').src='/assets/images/binaural_silvergray_trans.webp'; document.getElementById('slide4-spec-img-mobile').src='/assets/images/binaural_silvergray_trans.webp'" class="px-2 py-0.5 rounded-md bg-slate-800 text-white text-[10px] font-bold border border-slate-700 hover:bg-slate-700 transition-colors">
                       Titanium Silver
                     </button>
-                    <button type="button" onclick="document.getElementById('slide4-spec-img').src='/assets/images/audical_binaural_trans.webp'; document.getElementById('slide4-spec-img-mobile').src='/assets/images/audical_binaural_trans.webp'" class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-bold border border-amber-300 hover:bg-amber-200 transition-colors">
+                    <button type="button" onclick="document.getElementById('slide4-spec-img').src='/assets/images/audivox_binaural_trans.webp'; document.getElementById('slide4-spec-img-mobile').src='/assets/images/audivox_binaural_trans.webp'" class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-bold border border-amber-300 hover:bg-amber-200 transition-colors">
                       Beige Piel
                     </button>
                   </div>
@@ -685,7 +697,7 @@
           La Realidad vs. El Abuso de las Clínicas Tradicionales
         </h2>
         <p class="text-sm sm:text-base text-slate-600">
-          ¿Sabías que la mayoría de centros audiológicos cobran hasta <strong class="text-slate-900">S/ 4,000 o S/ 5,000 por cada oído</strong> para cubrir costosos alquileres y comisiones médicas? Audical te entrega la misma tecnología digital con chip de IA directo a casa.
+          ¿Sabías que la mayoría de centros audiológicos cobran hasta <strong class="text-slate-900">S/ 4,000 o S/ 5,000 por cada oído</strong> para cubrir costosos alquileres y comisiones médicas? Audivox te entrega la misma tecnología digital con chip de IA directo a casa.
         </p>
       </div>
 
@@ -708,10 +720,10 @@
             <span>Clínicas Tradicionales</span>
           </div>
 
-          <!-- Col 3: Audical Micro-RIC Header (Highlighted) -->
+          <!-- Col 3: Audivox Micro-RIC Header (Highlighted) -->
           <div class="col-span-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white flex items-center justify-center gap-1.5 py-4 px-2 sm:px-4 text-center font-extrabold text-xs sm:text-sm shadow-md relative">
             <i data-lucide="check-circle-2" class="w-4 h-4 text-white"></i>
-            <span>Audical Micro-RIC 16X</span>
+            <span>Audivox Micro-RIC 16X</span>
           </div>
         </div>
 
@@ -1123,7 +1135,7 @@
       <!-- Section Header with Narrative Coherence -->
       <div class="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
         <span class="text-xs font-bold text-teal-700 tracking-widest uppercase block">
-          Innovación Audical Micro-RIC 16X
+          Innovación Audivox Micro-RIC 16X
         </span>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-950 tracking-tight">
           Control Total y <span class="text-teal-600">Personalización desde Tu Celular</span>
@@ -1342,111 +1354,6 @@
   </section>
 
   <!-- =========================================================================
-       8. SECCIÓN: SIMULADOR DE PÉRDIDA AUDITIVA (Clean Philips-Style Audio Player)
-       ========================================================================= -->
-  <section class="py-14 sm:py-20 bg-slate-50 border-t border-slate-200/80">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      
-      <!-- Main White Card Container -->
-      <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-200/90 text-center relative overflow-hidden">
-        
-        <!-- Header -->
-        <div class="max-w-xl mx-auto space-y-2 mb-8">
-          <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block">
-            Experiencia Interactiva en Tiempo Real
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
-            Simulador de Pérdida Auditiva
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-600">
-            Empieza seleccionando un escenario y desliza la barra para entender cómo percibe el mundo tu familiar frente a una audición normal.
-          </p>
-        </div>
-
-        <!-- Scenario Selector Tabs -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-8">
-          <button type="button" data-scenario="bird" class="sim-scenario-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all border border-slate-200 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:border-slate-300 active:scale-95">
-            <span>🐦</span>
-            <span>Pájaro</span>
-          </button>
-          
-          <button type="button" data-scenario="speech" class="sim-scenario-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-teal-600 bg-teal-600 text-white shadow-md active:scale-95">
-            <span>💬</span>
-            <span>Discurso</span>
-          </button>
-
-          <button type="button" data-scenario="concert" class="sim-scenario-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all border border-slate-200 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:border-slate-300 active:scale-95">
-            <span>🎵</span>
-            <span>Concierto</span>
-          </button>
-        </div>
-
-        <!-- Central Circular Play/Pause Button -->
-        <div class="relative inline-flex items-center justify-center mb-8">
-          <!-- Pulse animation background ring -->
-          <div id="sim-pulse-ring" class="absolute w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-teal-500/20 pointer-events-none hidden"></div>
-          
-          <button id="sim-play-btn" type="button" aria-label="Reproducir o pausar simulación" class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-teal-50 border-4 border-teal-500/30 text-teal-600 flex items-center justify-center hover:scale-105 hover:bg-teal-100 active:scale-95 transition-all shadow-xl">
-            <!-- Play Icon -->
-            <svg id="sim-icon-play" class="w-8 h-8 sm:w-9 sm:h-9 fill-current text-teal-600 ml-1" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-            <!-- Pause Icon (hidden initially) -->
-            <svg id="sim-icon-pause" class="w-8 h-8 sm:w-9 sm:h-9 fill-current text-teal-600 hidden" viewBox="0 0 24 24">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Interactive Stepped Slider Box -->
-        <div class="max-w-md mx-auto mb-8 px-2">
-          
-          <!-- Live Level Label (Clean Typography, No Heavy Pills) -->
-          <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
-            <span>Nivel de Audición:</span>
-            <span id="sim-level-label" class="font-bold text-teal-700 text-sm">Normal (100% Claridad)</span>
-          </div>
-
-          <!-- Stepped Range Input -->
-          <div class="relative py-3">
-            <input id="sim-range-input" type="range" min="0" max="4" step="1" value="0" class="sim-range-slider" aria-label="Nivel de pérdida auditiva">
-            
-            <!-- 5 Stepped Dots on the track -->
-            <div class="flex justify-between items-center w-full px-1.5 mt-2.5 text-[11px] sm:text-xs font-medium text-slate-500 select-none">
-              <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="0">Normal</span>
-              <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="1">Leve</span>
-              <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="2">Moderado</span>
-              <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="3">Severo</span>
-              <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="4">Profundo</span>
-            </div>
-          </div>
-
-          <!-- Level Educational Explanation -->
-          <p id="sim-level-desc" class="text-xs text-slate-600 mt-2 italic">
-            "Escuchas todas las frecuencias con nitidez cristalina, captando cada consonante y detalle acústico del ambiente."
-          </p>
-
-        </div>
-
-        <!-- Divider -->
-        <div class="border-t border-slate-200/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="flex items-center gap-2 text-xs text-slate-500">
-            <i data-lucide="headphones" class="w-4 h-4 text-teal-600 flex-shrink-0"></i>
-            <span>Se recomienda usar audífonos para una mejor experiencia.</span>
-          </div>
-
-          <a href="#pedido" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm shadow-md transition-transform active:scale-95">
-            <span>Solicitar Audífonos Micro-RIC 16X</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5"></i>
-          </a>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
        9. SECTION: SEGURIDAD LOGÍSTICA & CONFIANZA EN PERÚ (Real Photography)
        ========================================================================= -->
   <section class="py-14 sm:py-20 bg-slate-50/70 border-y border-slate-200/60">
@@ -1474,7 +1381,7 @@
           <!-- Real Photography Container -->
           <div class="relative h-52 sm:h-56 overflow-hidden bg-slate-100">
             <img src="/assets/images/trust_real_envio_peru.webp" 
-                 alt="Entrega segura de paquete médico Audical a domicilio en Perú" 
+                 alt="Entrega segura de paquete médico Audivox a domicilio en Perú" 
                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
             <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-slate-800 shadow-md flex items-center gap-1.5 border border-slate-100">
@@ -1626,14 +1533,14 @@
       <!-- Desktop: exploded view infographic (horizontal) -->
       <div class="hidden lg:block">
         <img src="/assets/images/kit_exploded_desktop.webp"
-             alt="Kit completo Audical Micro-RIC 16X con todos sus componentes: par de audífonos, estuche LED, almohadillas, cable USB-C, filtros y manual"
+             alt="Kit completo Audivox Micro-RIC 16X con todos sus componentes: par de audífonos, estuche LED, almohadillas, cable USB-C, filtros y manual"
              class="w-full h-auto rounded-3xl shadow-xl border border-slate-200/60">
       </div>
 
       <!-- Mobile: exploded view infographic (vertical) -->
       <div class="lg:hidden flex justify-center">
         <img src="/assets/images/kit_exploded_mobile.webp"
-             alt="Kit completo Audical Micro-RIC 16X con todos sus componentes explicados"
+             alt="Kit completo Audivox Micro-RIC 16X con todos sus componentes explicados"
              class="w-full max-w-sm h-auto rounded-3xl shadow-xl border border-slate-200/60">
       </div>
 
@@ -1654,7 +1561,7 @@
           Hijos y Nietos que Transformaron la Vida de su Familia
         </h2>
         <p class="text-sm sm:text-base text-slate-600">
-          Historias de clientes en Lima y provincias que tomaron la decisión de confiar en Audical.
+          Historias de clientes en Lima y provincias que tomaron la decisión de confiar en Audivox.
         </p>
       </div>
 
@@ -2072,7 +1979,7 @@
       <!-- Main Order Box Card -->
       <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-slate-900 shadow-2xl border border-slate-100">
         
-        <form id="audical-order-form" class="space-y-4 sm:space-y-5">
+        <form id="audivox-order-form" class="space-y-4 sm:space-y-5">
           
           <!-- PASO 1: Package Option Selection with Product Miniatures -->
           <div class="space-y-2">
@@ -2348,9 +2255,9 @@
         <div class="md:col-span-5 space-y-4">
           <div class="flex items-center gap-3">
             <!-- Desktop Logo (Dark mode: White + Teal with imagotype) -->
-            <img src="/assets/images/logo_audical_desktop_dark.webp" alt="Audical.shop Perú" class="hidden sm:block h-8 w-auto object-contain">
+            <img src="/assets/images/logo_audivox_desktop_dark.webp" alt="Audivox.shop Perú" class="hidden sm:block h-8 w-auto object-contain">
             <!-- Mobile Logo (Dark mode: Wordmark only) -->
-            <img src="/assets/images/logo_audical_mobile_dark.webp" alt="Audical.shop Perú" class="sm:hidden h-7 w-auto object-contain">
+            <img src="/assets/images/logo_audivox_mobile_dark.webp" alt="Audivox.shop Perú" class="sm:hidden h-7 w-auto object-contain">
           </div>
           <p class="text-xs text-slate-400 leading-relaxed max-w-md">
             Especialistas en soluciones auditivas digitales de última tecnología Micro-RIC 16X. Calibración de grado médico, conectividad inteligente y distribución autorizada con cobertura integral en todo el territorio peruano.
@@ -2376,7 +2283,7 @@
           <ul class="space-y-2.5 text-xs text-slate-300">
             <li class="flex items-start gap-2.5">
               <i data-lucide="map-pin" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
-              <span><strong>Cobertura en todo el Perú:</strong> Lima Metropolitana y Provincias.</span>
+              <span><strong>Cobertura en todo el Perú*:</strong> Envíos a Lima y Provincias vía Olva Courier y Shalom.<br><span class="text-[10px] text-slate-400 block mt-1 leading-normal">*Según disponibilidad y radio de cobertura de las agencias de courier en cada localidad.</span></span>
             </li>
             <li class="flex items-start gap-2.5">
               <i data-lucide="package-check" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
@@ -2388,7 +2295,7 @@
             </li>
             <li class="flex items-start gap-2.5">
               <i data-lucide="clock" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
-              <span><strong>Atención al Cliente:</strong> Lun a Sáb de 8:00 AM a 8:00 PM.</span>
+              <span><strong>Atención al Cliente:</strong> 24 horas vía WhatsApp.</span>
             </li>
           </ul>
         </div>
@@ -2402,11 +2309,11 @@
           <ul class="space-y-2.5 text-xs text-slate-300">
             <li class="flex items-start gap-2.5">
               <i data-lucide="award" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
-              <span><strong>Garantía de Fábrica:</strong> 12 meses con soporte técnico local.</span>
+              <span><strong>Garantía de Fábrica:</strong> 12 meses ante defectos de fabricación.</span>
             </li>
             <li class="flex items-start gap-2.5">
               <i data-lucide="headset" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
-              <span><strong>Asesoría Audiológica:</strong> Guía de uso y calibración por WhatsApp.</span>
+              <span><strong>Guías en Video:</strong> Videotutoriales paso a paso por WhatsApp para uso y mantenimiento.</span>
             </li>
             <li class="flex items-start gap-2.5">
               <i data-lucide="lock" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
@@ -2420,7 +2327,7 @@
       <!-- Bottom Bar with Conecta2.lat Attribution -->
       <div class="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-[11px] text-slate-400">
         <div>
-          <p>© 2026 Audical Perú. Todos los derechos reservados · <span class="text-slate-300 font-medium">audical.shop</span></p>
+          <p>© 2026 Audivox Perú. Todos los derechos reservados · <span class="text-slate-300 font-medium">audivox.shop</span></p>
           <p class="text-[10px] text-slate-500 mt-0.5">Dispositivos auditivos digitales de venta libre (OTC) diseñados para amplificación médica de alta fidelidad.</p>
         </div>
         
@@ -2469,7 +2376,7 @@
   <!-- =========================================================================
        16. FLOATING WHATSAPP BUTTON (Direct Customer Support)
        ========================================================================= -->
-  <a href="https://api.whatsapp.com/send?phone=51987654321&text=%C2%A1Hola%20Audical!%20Deseo%20informaci%C3%B3n%20sobre%20los%20Aud%C3%ADfonos%20Digitales%20Micro-RIC%2016X%20con%20Pago%20Contra%20Entrega." target="_blank" rel="noopener noreferrer" class="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-40 w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 shadow-2xl shadow-emerald-500/40 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 group" aria-label="Hablar por WhatsApp">
+  <a href="https://api.whatsapp.com/send?phone=51987654321&text=%C2%A1Hola%20Audivox!%20Deseo%20informaci%C3%B3n%20sobre%20los%20Aud%C3%ADfonos%20Digitales%20Micro-RIC%2016X%20con%20Pago%20Contra%20Entrega." target="_blank" rel="noopener noreferrer" class="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-40 w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 shadow-2xl shadow-emerald-500/40 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 group" aria-label="Hablar por WhatsApp">
     <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
       <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
     </svg>

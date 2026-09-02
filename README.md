@@ -1,20 +1,28 @@
-# Audical Micro-RIC 16X — Landing Page de Alta Conversión (Perú)
+# Audivox Micro-RIC 16X — Landing Page de Alta Conversión (Perú)
 
-> **Sitio Oficial:** [https://audical.shop](https://audical.shop)  
-> **Desarrollado y Optimizado por:** [Conecta2 Lat](https://conecta2.lat) — Hub de Innovación y Soluciones Tecnológicas de Alta Conversión.
-
----
-
-## 🎯 Descripción del Proyecto
-
-Landing page de grado médico y alta conversión (CRO) diseñada específicamente para el mercado peruano, orientada a la venta directa de los audífonos digitales **Audical Micro-RIC 16X** con chip de Inteligencia Artificial de 16 canales, calibración médica por aplicación móvil y modalidad de **Pago Contra Entrega** en Lima y Provincias con **Envío 100% Gratis**.
+> **Sitio Oficial:** [https://audivox.shop](https://audivox.shop)  
+> **Versión Micro-RIC (Venta):** [https://audivox.shop/ric](https://audivox.shop/ric)  
+> **Versión Micro-RIC (Lista de Espera):** [https://audivox.shop/ric/lista-espera](https://audivox.shop/ric/lista-espera)  
+> **Versión OTC (Lista de Espera):** [https://audivox.shop/lista-espera](https://audivox.shop/lista-espera)  
+> **Desarrollado y Optimizado por:** [Conecta2 Lat](https://conecta2.lat)
 
 ---
 
-## 🚀 Arquitectura y Tecnologías
+## 🎯 Propósito del Proyecto
 
-- **Estructura:** HTML5 Semántico con estándares W3C y accesibilidad WCAG 2.1 AA.
-- **Estilos:** Tailwind CSS con paleta HSL curada de alta gama médica y transiciones fluidas.
+Landing page de grado médico y alta conversión (CRO) diseñada específicamente para el mercado peruano, con funiles duales:
+1. **Venta Directa con Pago Contra Entrega:** Para conversión inmediata con despacho express vía Olva Courier y Shalom.
+2. **Lista de Espera de Prelanzamiento:** Para captura de leads interesados en el lote de importación con 50% de descuento.
+
+---
+
+## 🏗️ Estructura del Sitio
+
+- `/` / `/otc`: Versión Venta Directa Emocional / Familiar.
+- `/ric`: Versión Venta Directa Técnico / Clínico Micro-RIC 16X.
+- `/lista-espera` / `/espera`: Versión Lista de Espera Prelanzamiento (OTC).
+- `/ric/lista-espera` / `/ric-espera` / `/ric/espera`: Versión Lista de Espera Prelanzamiento (Micro-RIC 16X).
+
 - **Interactividad:** JavaScript Vanilla puro (ES6+) sin dependencias pesadas:
   - Header inteligente con revelación fluida al deslizar hacia abajo (*Smart Sticky Header* acelerado por GPU).
   - Simulador Acústico Interactivo Web Audio API con calibración de 16 bandas.

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  <title>Simulador de Pérdida Auditiva Interactivo | Audivox Perú</title>
+  <meta name="title" content="Simulador de Pérdida Auditiva Interactivo | Audivox Perú">
+  <meta name="description" content="Experimenta en tiempo real cómo escucha una persona con pérdida auditiva leve, moderada y severa. Herramienta interactiva para familias y campañas de salud auditiva en Perú.">
+  <meta name="keywords" content="simulador perdida auditiva, como escucha un sordo, audio simulador hipoacusia, audivox peru, audifonos para sordera lima">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0f172a',
+              blue: '#1e3a8a',
+              teal: '#0d9488',
+              tealhover: '#0f766e',
+              emerald: '#059669',
+              slate: '#f8fafc',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .pulse-ring {
+      animation: pulseWave 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    @keyframes pulseWave {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.25; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .sim-range-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 9999px;
+      background: #e2e8f0;
+      outline: none;
+      cursor: pointer;
+    }
+    .sim-range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #0d9488;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(13, 148, 136, 0.4);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .sim-range-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .sim-range-slider::-moz-range-thumb {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #0d9488;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(13, 148, 136, 0.4);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-teal-500 selection:text-white">
+
+  <!-- =========================================================================
+       1. CLINICAL HEADER & NAVIGATION
+       ========================================================================= -->
+  <header class="bg-white border-b border-slate-200/80 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center group py-0.5" aria-label="Audivox.shop Inicio">
+        <img src="/assets/images/logo_audivox_desktop.webp" alt="Audivox.shop" class="h-8 sm:h-9 w-auto object-contain">
+      </a>
+
+      <!-- Medical & Trust Indicators -->
+      <div class="flex items-center gap-3 sm:gap-6 text-xs text-slate-600 font-medium">
+        <div class="hidden sm:flex items-center gap-1.5 text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200/60 font-semibold">
+          <i data-lucide="headphones" class="w-4 h-4 text-teal-600"></i>
+          <span>Herramienta Interactiva de Salud Auditiva</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-slate-500">
+          <i data-lucide="volume-2" class="w-3.5 h-3.5 text-teal-600"></i>
+          <span>Simulador Acústico Real</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. MAIN HERO & SIMULATOR CONTAINER
+       ========================================================================= -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 flex flex-col justify-center">
+    
+    <!-- Hero Intro Header -->
+    <div class="text-center space-y-3 max-w-2xl mx-auto mb-8 sm:mb-10">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-teal-50 text-teal-700 border border-teal-200/80 uppercase tracking-wider">
+        <i data-lucide="activity" class="w-3.5 h-3.5 text-teal-600"></i>
+        <span>Experiencia en Tiempo Real</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Simulador de Pérdida Auditiva
+      </h1>
+      <p class="text-xs sm:text-base text-slate-600 leading-relaxed text-balance">
+        ¿Alguna vez te has preguntado cómo percibe el mundo un familiar con pérdida auditiva? Selecciona un entorno sonoro, presiona reproducir y <strong>desliza la barra para experimentar cómo se pierde la claridad del habla y la nitidez acústica</strong> frente a una audición normal.
+      </p>
+      <div class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
+        <i data-lucide="headphones" class="w-4 h-4 text-teal-600"></i>
+        <span>Recomendación: Usa auriculares estéreo para apreciar con fidelidad cada filtro de frecuencia.</span>
+      </div>
+    </div>
+
+    <!-- Simulator Interactive Card -->
+    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200/90 text-center relative overflow-hidden">
+      
+      <!-- Subtle top corner light accent -->
+      <div class="absolute -top-24 -right-24 w-60 h-60 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- 1. Scenario Selector Tabs -->
+      <div class="space-y-2 mb-8">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">1. Elige un escenario sonoro:</span>
+        <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+          
+          <button type="button" data-scenario="bird" class="sim-scenario-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all border border-slate-200 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:border-slate-300 active:scale-95">
+            <span class="text-base">🐦</span>
+            <span>Canto de Pájaro (Agudos)</span>
+          </button>
+          
+          <button type="button" data-scenario="speech" class="sim-scenario-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-teal-600 bg-teal-600 text-white shadow-md active:scale-95">
+            <span class="text-base">💬</span>
+            <span>Conversación (Habla Humana)</span>
+          </button>
+
+          <button type="button" data-scenario="concert" class="sim-scenario-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all border border-slate-200 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:border-slate-300 active:scale-95">
+            <span class="text-base">🎵</span>
+            <span>Música (Rango Completo)</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- 2. Central Circular Play/Pause Button -->
+      <div class="relative inline-flex items-center justify-center mb-8">
+        <!-- Pulse animation background ring -->
+        <div id="sim-pulse-ring" class="absolute w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-teal-500/20 pointer-events-none hidden"></div>
+        
+        <button id="sim-play-btn" type="button" aria-label="Reproducir o pausar simulación" class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-teal-50 border-4 border-teal-500/40 text-teal-600 flex items-center justify-center hover:scale-105 hover:bg-teal-100 active:scale-95 transition-all shadow-xl">
+          <!-- Play Icon -->
+          <svg id="sim-icon-play" class="w-8 h-8 sm:w-9 sm:h-9 fill-current text-teal-600 ml-1" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <!-- Pause Icon (hidden initially) -->
+          <svg id="sim-icon-pause" class="w-8 h-8 sm:w-9 sm:h-9 fill-current text-teal-600 hidden" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 3. Interactive Stepped Slider Box -->
+      <div class="max-w-md mx-auto mb-8 px-2">
+        
+        <!-- Live Level Label -->
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+          <span>2. Grado de Pérdida Auditiva:</span>
+          <span id="sim-level-label" class="font-extrabold text-teal-700 text-sm">Normal (100% Claridad)</span>
+        </div>
+
+        <!-- Stepped Range Input -->
+        <div class="relative py-3">
+          <input id="sim-range-input" type="range" min="0" max="4" step="1" value="0" class="sim-range-slider" aria-label="Nivel de pérdida auditiva">
+          
+          <!-- 5 Stepped Dots on the track -->
+          <div class="flex justify-between items-center w-full px-1.5 mt-2.5 text-[11px] sm:text-xs font-bold text-slate-500 select-none">
+            <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="0">Normal</span>
+            <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="1">Leve</span>
+            <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="2">Moderado</span>
+            <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="3">Severo</span>
+            <span class="cursor-pointer hover:text-teal-700 transition-colors" data-step="4">Profundo</span>
+          </div>
+        </div>
+
+        <!-- Level Educational Explanation Box -->
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 mt-3 text-left">
+          <p id="sim-level-desc" class="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
+            "Escuchas todas las frecuencias con nitidez cristalina, captando cada consonante y detalle acústico del ambiente."
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 4. Educational Insights for Families -->
+      <div class="border-t border-slate-200 pt-8 max-w-xl mx-auto text-left space-y-4">
+        <h3 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+          <i data-lucide="info" class="w-4 h-4 text-teal-600"></i>
+          <span>¿Por qué gritarle a una persona con pérdida auditiva no ayuda?</span>
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          En la gran mayoría de casos (hipoacusia neurosensorial asociada a la edad), la persona no pierde simplemente "volumen general", sino que <strong>pierde selectivamente las frecuencias agudas (2000 a 4000 Hz)</strong>. Estas frecuencias corresponden a las consonantes suaves como la <em>S, F, T, P</em>, que dan significado a las palabras.
+        </p>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          Al gritar, aumentamos los tonos graves de nuestra voz, lo que satura su oído y hace que el habla suene distorsionada o molesta ("No me grites, habla claro"). La solución clínica no es más volumen, sino <strong>amplificación digital selectiva por frecuencias</strong>.
+        </p>
+      </div>
+
+      <!-- 5. Bottom Action Card -->
+      <div class="mt-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-teal-900 to-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div>
+          <h4 class="font-extrabold text-sm sm:text-base text-white">¿Quieres evaluar tu audición de forma precisa?</h4>
+          <p class="text-xs text-slate-300 mt-0.5">Realiza nuestro test auditivo online gratuito con tonos clínicos en menos de 4 minutos.</p>
+        </div>
+        <a href="/prueba-auditiva" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-600 text-slate-950 font-extrabold text-xs sm:text-sm shadow-md transition-all whitespace-nowrap active:scale-95">
+          <span>Hacer Prueba Auditiva</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       3. STANDALONE CLINICAL FOOTER
+       ========================================================================= -->
+  <footer class="bg-white border-t border-slate-200 text-xs text-slate-500 py-8 px-4 sm:px-6 mt-12">
+    <div class="max-w-4xl mx-auto text-center space-y-3">
+      <div class="flex items-center justify-center gap-2 font-bold text-slate-700">
+        <span>Audivox Hearing Health</span>
+        <span>•</span>
+        <span>Concienciación Acústica</span>
+      </div>
+      <p class="text-[11px] text-slate-400 max-w-xl mx-auto">
+        Aviso médico: Este simulador reproduce aproximaciones psicoacústicas de atenuación tonal para fines educativos y de sensibilización familiar. No sustituye una evaluación audiológica profesional.
+      </p>
+      <p class="text-[10px] text-slate-400">
+        © 2026 Audivox.shop · Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       4. INTERACTIVE SIMULATOR JAVASCRIPT
+       ========================================================================= -->
+  <script>
+    (function () {
+      const scenarioBtns = document.querySelectorAll('.sim-scenario-btn');
+      const playBtn = document.getElementById('sim-play-btn');
+      const playIcon = document.getElementById('sim-icon-play');
+      const pauseIcon = document.getElementById('sim-icon-pause');
+      const pulseRing = document.getElementById('sim-pulse-ring');
+      const rangeInput = document.getElementById('sim-range-input');
+      const levelLabel = document.getElementById('sim-level-label');
+      const levelDesc = document.getElementById('sim-level-desc');
+      const stepSpans = document.querySelectorAll('[data-step]');
+
+      let currentScenario = 'speech'; // default: 'speech', 'bird', 'concert'
+      let currentLevelIdx = 0;        // 0: normal, 1: mild, 2: moderate, 3: severe, 4: profound
+      let isPlaying = false;
+      let audioPlayer = new Audio();
+      audioPlayer.loop = true;
+      audioPlayer.preload = 'auto';
+
+      const levels = ['normal', 'mild', 'moderate', 'severe', 'profound'];
+      
+      const levelInfo = [
+        {
+          title: 'Normal (100% Claridad)',
+          desc: '"Escuchas todas las frecuencias con nitidez cristalina, captando cada consonante y detalle acústico del ambiente."',
+          color: 'text-teal-700'
+        },
+        {
+          title: 'Leve (Pérdida Inicial)',
+          desc: '"Las frecuencias muy agudas se apagan sutilmente. Ciertos susurros y sonidos suaves empiezan a perder definición."',
+          color: 'text-sky-700'
+        },
+        {
+          title: 'Moderado (Pérdida Habitual)',
+          desc: '"La voz suena apagada y lejana. Dificultad notable para entender conversaciones familiares en medio del ruido ambiental."',
+          color: 'text-amber-700'
+        },
+        {
+          title: 'Severo (Pérdida Avanzada)',
+          desc: '"Sonido muy amortiguado como «bajo el agua». Solo se perciben ruidos graves; la conversación se vuelve ininteligible."',
+          color: 'text-orange-700'
+        },
+        {
+          title: 'Profundo (Aislamiento Total)',
+          desc: '"Pérdida auditiva extrema. Prácticamente todo el espectro sonoro desaparece sin el uso de audífonos digitales."',
+          color: 'text-red-700'
+        }
+      ];
+
+      function getAudioSrc(scenario, levelIdx) {
+        const levelName = levels[levelIdx] || 'normal';
+        return `/assets/audio/${scenario}-${levelName}.mp3`;
+      }
+
+      function updateAudioSource(preserveTime = true) {
+        const prevTime = preserveTime && audioPlayer ? audioPlayer.currentTime : 0;
+        const newSrc = getAudioSrc(currentScenario, currentLevelIdx);
+        
+        audioPlayer.src = newSrc;
+        audioPlayer.load();
+
+        if (preserveTime && prevTime > 0) {
+          audioPlayer.onloadedmetadata = () => {
+            try {
+              if (audioPlayer.duration && prevTime < audioPlayer.duration) {
+                audioPlayer.currentTime = prevTime;
+              }
+            } catch (e) {}
+          };
+        }
+
+        if (isPlaying) {
+          const playPromise = audioPlayer.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(e => {
+              console.log('Audio playback prevented/paused:', e);
+            });
+          }
+        }
+      }
+
+      function updateLevelDisplay(idx) {
+        currentLevelIdx = idx;
+        const info = levelInfo[idx] || levelInfo[0];
+
+        if (levelLabel) {
+          levelLabel.textContent = info.title;
+          levelLabel.className = `font-extrabold text-sm ${info.color}`;
+        }
+        if (levelDesc) {
+          levelDesc.textContent = info.desc;
+        }
+
+        stepSpans.forEach(span => {
+          const stepVal = parseInt(span.getAttribute('data-step'), 10);
+          if (stepVal === idx) {
+            span.classList.add('text-teal-700', 'font-black');
+            span.classList.remove('text-slate-500');
+          } else {
+            span.classList.remove('text-teal-700', 'font-black');
+            span.classList.add('text-slate-500');
+          }
+        });
+      }
+
+      // Initial audio load
+      updateAudioSource(false);
+      updateLevelDisplay(0);
+
+      // Play/Pause button
+      if (playBtn) {
+        playBtn.addEventListener('click', () => {
+          if (isPlaying) {
+            audioPlayer.pause();
+            isPlaying = false;
+            if (playIcon) playIcon.classList.remove('hidden');
+            if (pauseIcon) pauseIcon.classList.add('hidden');
+            if (pulseRing) pulseRing.classList.add('hidden');
+          } else {
+            const playPromise = audioPlayer.play();
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                isPlaying = true;
+                if (playIcon) playIcon.classList.add('hidden');
+                if (pauseIcon) pauseIcon.classList.remove('hidden');
+                if (pulseRing) {
+                  pulseRing.classList.remove('hidden');
+                  pulseRing.classList.add('pulse-ring');
+                }
+              }).catch(err => {
+                console.warn('Playback error:', err);
+              });
+            }
+          }
+        });
+      }
+
+      // Scenario selection
+      scenarioBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const sc = btn.getAttribute('data-scenario');
+          if (sc === currentScenario) return;
+
+          currentScenario = sc;
+
+          scenarioBtns.forEach(b => {
+            b.classList.remove('bg-teal-600', 'text-white', 'border-teal-600', 'shadow-md', 'font-bold');
+            b.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-200', 'font-semibold');
+          });
+
+          btn.classList.remove('bg-slate-100', 'text-slate-700', 'border-slate-200', 'font-semibold');
+          btn.classList.add('bg-teal-600', 'text-white', 'border-teal-600', 'shadow-md', 'font-bold');
+
+          updateAudioSource(true);
+        });
+      });
+
+      // Range slider input
+      if (rangeInput) {
+        rangeInput.addEventListener('input', (e) => {
+          const val = parseInt(e.target.value, 10);
+          updateLevelDisplay(val);
+          updateAudioSource(true);
+        });
+      }
+
+      // Click on step dots
+      stepSpans.forEach(span => {
+        span.addEventListener('click', () => {
+          const val = parseInt(span.getAttribute('data-step'), 10);
+          if (rangeInput) rangeInput.value = val;
+          updateLevelDisplay(val);
+          updateAudioSource(true);
+        });
+      });
+
+      // Initialize Lucide Icons
+      if (window.lucide) window.lucide.createIcons();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  <title>Prueba Auditiva Online Gratuita | Audivox Perú</title>
+  <meta name="title" content="Prueba Auditiva Online Gratuita | Audivox Perú">
+  <meta name="description" content="Evalúa tu capacidad de audición en menos de 5 minutos con la prueba auditiva online de Audivox. Test interactivo con tonos clínicos de frecuencia por oído y audiograma digital estimado.">
+  <meta name="keywords" content="prueba auditiva online peru, test audicion gratis, examen audiológico casero, audiograma digital, test para sordera, audivox.shop">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0f172a',
+              blue: '#1e3a8a',
+              sky: '#0284c7',
+              teal: '#0d9488',
+              tealhover: '#0f766e',
+              teallight: '#f0fdfa',
+              emerald: '#059669',
+              slate: '#f8fafc',
+              border: '#e2e8f0'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .pulse-ring {
+      animation: pulseWave 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    @keyframes pulseWave {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.3; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .sound-bar {
+      transition: height 0.15s ease;
+    }
+    .audiogram-grid line {
+      stroke: #e2e8f0;
+      stroke-width: 1;
+    }
+    .audiogram-grid line.major {
+      stroke: #cbd5e1;
+      stroke-width: 1.5;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-teal-500 selection:text-white">
+
+  <!-- =========================================================================
+       1. CLINICAL HEADER & NAVIGATION
+       ========================================================================= -->
+  <header class="bg-white border-b border-slate-200/80 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center group py-0.5" aria-label="Audivox.shop Inicio">
+        <img src="/assets/images/logo_audivox_desktop.webp" alt="Audivox.shop" class="h-8 sm:h-9 w-auto object-contain">
+      </a>
+
+      <!-- Medical & Trust Indicators -->
+      <div class="flex items-center gap-3 sm:gap-6 text-xs text-slate-600 font-medium">
+        <div class="hidden sm:flex items-center gap-1.5 text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200/60 font-semibold">
+          <i data-lucide="shield-check" class="w-4 h-4 text-teal-600"></i>
+          <span>Protocolo Audiológico ISO</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-slate-500">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>100% Gratuito y Confidencial</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. MAIN TEST CONTAINER
+       ========================================================================= -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-10 flex flex-col justify-center">
+    
+    <!-- Dynamic Step Progress Header -->
+    <div class="mb-6 sm:mb-8">
+      <div class="flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+        <span id="step-name-display">Paso 1: Preparación</span>
+        <span id="step-percent-display" class="text-teal-700">20% completado</span>
+      </div>
+      <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-300/40">
+        <div id="progress-bar-fill" class="bg-gradient-to-r from-teal-500 to-emerald-600 h-full rounded-full transition-all duration-500 ease-out" style="width: 20%;"></div>
+      </div>
+    </div>
+
+    <!-- Container Card with Smooth States -->
+    <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-6 sm:p-10 relative overflow-hidden">
+      
+      <!-- Subtle top corner light accent -->
+      <div class="absolute -top-24 -right-24 w-60 h-60 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- ===================================================================
+           PHASE 0: PREPARACIÓN (Inspirada exactamente en Philips Hearing Test)
+           =================================================================== -->
+      <section id="phase-intro" class="space-y-8 animate-fadeIn">
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-teal-50 text-teal-700 border border-teal-200/80 uppercase tracking-wider">
+            <i data-lucide="headphones" class="w-3.5 h-3.5 text-teal-600"></i>
+            <span>Evaluación Auditiva Interactiva</span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Prueba auditiva online
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed text-balance">
+            Bienvenido a la prueba auditiva interactiva de Audivox. La prueba durará unos <strong>tres a cuatro minutos</strong>. Incluye una calibración acústica con tonos clínicos puros para cada oído y cuatro sencillas preguntas de autopercepción en situaciones reales.
+          </p>
+          <p class="text-[11px] sm:text-xs text-slate-400 italic">
+            *Esta prueba orientativa no sustituye una audiometría presencial con cámara insonorizada, pero te permite conocer de forma inmediata el estado de tu audición y si requieres amplificación digital.
+          </p>
+        </div>
+
+        <!-- 3 Instrucciones Previas (como Philips) -->
+        <div class="border-t border-slate-100 pt-6">
+          <p class="text-center text-xs sm:text-sm font-bold text-slate-800 uppercase tracking-wider mb-6">
+            Cómo obtener el resultado más preciso
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            
+            <!-- Item 1: Lugar tranquilo -->
+            <div class="flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-teal-500/40 transition-colors">
+              <div class="w-14 h-14 rounded-2xl bg-white text-teal-600 shadow-sm border border-slate-200 flex items-center justify-center mb-3">
+                <i data-lucide="armchair" class="w-7 h-7"></i>
+              </div>
+              <span class="font-bold text-slate-900 text-sm mb-1">Siéntate en un lugar tranquilo</span>
+              <p class="text-xs text-slate-500">Cierra ventanas o puertas para evitar ruidos de tráfico o electrodomésticos.</p>
+            </div>
+
+            <!-- Item 2: Auriculares -->
+            <div class="flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-teal-500/40 transition-colors">
+              <div class="w-14 h-14 rounded-2xl bg-white text-teal-600 shadow-sm border border-slate-200 flex items-center justify-center mb-3">
+                <i data-lucide="headphones" class="w-7 h-7"></i>
+              </div>
+              <span class="font-bold text-slate-900 text-sm mb-1">Lleva auriculares puestos</span>
+              <p class="text-xs text-slate-500">Imprescindible para calibrar el canal izquierdo y derecho de forma independiente.</p>
+            </div>
+
+            <!-- Item 3: Volumen a medio -->
+            <div class="flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-teal-500/40 transition-colors">
+              <div class="w-14 h-14 rounded-2xl bg-white text-teal-600 shadow-sm border border-slate-200 flex items-center justify-center mb-3">
+                <i data-lucide="volume-2" class="w-7 h-7"></i>
+              </div>
+              <span class="font-bold text-slate-900 text-sm mb-1">Ajusta el volumen al 50%</span>
+              <p class="text-xs text-slate-500">Un nivel moderado y cómodo en tu teléfono o computadora antes de empezar.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-4 flex justify-center">
+          <button id="btn-start-test" type="button" class="inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-4 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-teal-600/30 transition-all transform active:scale-95">
+            <span>Iniciar la prueba auditiva</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           PHASE 1: CALIBRACIÓN ESTÉREO (Comprobación de Auriculares)
+           =================================================================== -->
+      <section id="phase-calibration" class="space-y-6 hidden animate-fadeIn">
+        <div class="text-center space-y-2 max-w-xl mx-auto">
+          <span class="text-xs font-bold text-teal-700 uppercase tracking-wider block">Verificación Acústica</span>
+          <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900">
+            Comprobación de tus Auriculares
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Vamos a reproducir un breve tono suave en cada oído para asegurarnos de que tus audífonos o auriculares estéreo están colocados correctamente.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          
+          <!-- Test Left Ear -->
+          <div class="p-6 rounded-2xl border-2 border-slate-200 bg-slate-50/60 flex flex-col items-center text-center space-y-3">
+            <div class="w-12 h-12 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center font-black text-sm">
+              IZQ
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm sm:text-base">Oído Izquierdo</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Tono de referencia (1000 Hz)</p>
+            </div>
+            <button type="button" id="btn-play-calib-left" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-800 text-xs font-bold hover:bg-sky-50 hover:border-sky-500 hover:text-sky-700 transition-all shadow-xs">
+              <i data-lucide="play" class="w-4 h-4"></i>
+              <span>Probar Tono Izquierdo</span>
+            </button>
+            <span id="calib-left-status" class="text-[11px] font-semibold text-slate-400">Presiona para probar</span>
+          </div>
+
+          <!-- Test Right Ear -->
+          <div class="p-6 rounded-2xl border-2 border-slate-200 bg-slate-50/60 flex flex-col items-center text-center space-y-3">
+            <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-black text-sm">
+              DER
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm sm:text-base">Oído Derecho</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Tono de referencia (1000 Hz)</p>
+            </div>
+            <button type="button" id="btn-play-calib-right" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-800 text-xs font-bold hover:bg-rose-50 hover:border-rose-500 hover:text-rose-700 transition-all shadow-xs">
+              <i data-lucide="play" class="w-4 h-4"></i>
+              <span>Probar Tono Derecho</span>
+            </button>
+            <span id="calib-right-status" class="text-[11px] font-semibold text-slate-400">Presiona para probar</span>
+          </div>
+
+        </div>
+
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-100">
+          <p class="text-xs text-slate-500">¿Escuchaste ambos tonos claramente?</p>
+          <button id="btn-to-audiometry" type="button" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all active:scale-95">
+            <span>Sí, todo suena bien. Continuar</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           PHASE 2: AUDIOMETRÍA DE TONOS PUROS CLÍNICOS (Web Audio API)
+           =================================================================== -->
+      <section id="phase-tones" class="space-y-6 hidden animate-fadeIn">
+        
+        <!-- Header of Tones step -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
+          <div>
+            <span id="tone-ear-badge" class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-sky-100 text-sky-800 uppercase tracking-wider mb-1">
+              Oído Izquierdo
+            </span>
+            <h2 id="tone-freq-title" class="text-lg sm:text-2xl font-extrabold text-slate-900">
+              Evaluando Frecuencia: 1000 Hz (Habla humana)
+            </h2>
+          </div>
+          <div class="text-right flex items-center gap-1.5 sm:self-start">
+            <span id="tone-step-counter" class="text-xs font-bold text-slate-400">Tono 1 de 8</span>
+          </div>
+        </div>
+
+        <!-- Tone Player Display Card -->
+        <div class="p-8 sm:p-12 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 text-white flex flex-col items-center justify-center text-center relative overflow-hidden shadow-inner">
+          
+          <!-- Animated pulse visualizer -->
+          <div id="tone-pulse-circle" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-teal-500/20 border-2 border-teal-400 flex items-center justify-center mb-5 transition-transform">
+            <i data-lucide="volume-2" id="tone-anim-icon" class="w-10 h-10 text-teal-300"></i>
+          </div>
+
+          <h3 id="tone-instruction-title" class="text-base sm:text-xl font-bold mb-1">
+            Reproduciendo tono...
+          </h3>
+          <p id="tone-instruction-desc" class="text-xs sm:text-sm text-slate-300 max-w-md">
+            Escucha con atención a través de tus auriculares. ¿Llegas a percibir el pitido?
+          </p>
+
+          <!-- Replay Button -->
+          <button type="button" id="btn-replay-current-tone" class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-medium transition-colors">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>Volver a reproducir tono</span>
+          </button>
+        </div>
+
+        <!-- Yes / No Response Buttons (Clinical standard) -->
+        <div class="space-y-2 pt-2">
+          <p class="text-xs text-center font-bold text-slate-700 uppercase tracking-wider">
+            ¿Pudiste escuchar este sonido?
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-md mx-auto">
+            <button type="button" id="btn-heard-yes" class="py-3.5 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+              <i data-lucide="check" class="w-5 h-5"></i>
+              <span>Sí, lo escucho</span>
+            </button>
+            <button type="button" id="btn-heard-no" class="py-3.5 px-5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 font-extrabold text-sm flex items-center justify-center gap-2 transition-all transform active:scale-95">
+              <i data-lucide="volume-x" class="w-5 h-5"></i>
+              <span>No lo escucho</span>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================================================================
+           PHASE 3: CUESTIONARIO DE SITUACIONES COTIDIANAS (4 Preguntas)
+           =================================================================== -->
+      <section id="phase-questions" class="space-y-6 hidden animate-fadeIn">
+        <div class="border-b border-slate-100 pb-4">
+          <span class="text-xs font-bold text-teal-700 uppercase tracking-wider block">Autopercepción de Comprensión</span>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">
+            Situaciones Cotidianas de Escucha
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+            Pregunta <span id="q-number-display">1</span> de 4
+          </p>
+        </div>
+
+        <!-- Question Card -->
+        <div class="space-y-4">
+          <h3 id="q-title" class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">
+            ¿Te resulta difícil entender las conversaciones cuando hay ruido de fondo (como restaurantes o reuniones familiares)?
+          </h3>
+
+          <div class="space-y-2.5" id="q-options-container">
+            <!-- Populated via JavaScript for smooth responses -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           PHASE 4: RESULTADOS DETALLADOS & AUDIOGRAMA DIGITAL
+           =================================================================== -->
+      <section id="phase-results" class="space-y-8 hidden animate-fadeIn">
+        
+        <!-- Results Header Banner -->
+        <div class="text-center space-y-2 max-w-xl mx-auto">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase tracking-wider">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Diagnóstico Preliminar Completado</span>
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Resultado de Tu Prueba Auditiva
+          </h2>
+          <p id="result-summary-lead" class="text-xs sm:text-sm text-slate-600">
+            Basado en tus umbrales de tono puro y respuestas a situaciones cotidianas.
+          </p>
+        </div>
+
+        <!-- Diagnostic Alert Box -->
+        <div id="result-diagnosis-box" class="p-5 sm:p-6 rounded-2xl border-2 flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+          <div id="result-icon-badge" class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-lg">
+            <i data-lucide="activity" class="w-7 h-7"></i>
+          </div>
+          <div class="text-center sm:text-left space-y-1">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Estimación Global:</span>
+            <h3 id="result-diagnosis-title" class="text-lg sm:text-xl font-black text-slate-950">
+              Pérdida Auditiva Leve a Moderada
+            </h3>
+            <p id="result-diagnosis-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Tus resultados indican una pérdida de sensibilidad acústica en las frecuencias medias y agudas (2000 Hz - 4000 Hz). Es habitual que percibas el habla apagada o te cueste distinguir consonantes suaves en medio del ruido ambiental.
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Audiogram SVG Chart -->
+        <div class="bg-slate-900 text-white rounded-3xl p-5 sm:p-8 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h4 class="font-bold text-sm sm:text-base text-white">Audiograma Digital Estimado (dB HL)</h4>
+              <p class="text-[11px] text-slate-400">Curvas de respuesta auditiva por frecuencia para cada oído</p>
+            </div>
+            <!-- Legend -->
+            <div class="flex items-center gap-4 text-xs">
+              <span class="flex items-center gap-1.5 font-bold text-sky-400">
+                <span class="w-3 h-3 rounded-full bg-sky-500 inline-block"></span>
+                <span>Oído Izquierdo (✕)</span>
+              </span>
+              <span class="flex items-center gap-1.5 font-bold text-rose-400">
+                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                <span>Oído Derecho (◯)</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- SVG Graph -->
+          <div class="w-full overflow-x-auto">
+            <svg id="audiogram-svg" viewBox="0 0 520 280" class="w-full h-auto min-w-[420px] select-none">
+              <!-- Rendered via JS -->
+            </svg>
+          </div>
+
+          <!-- Threshold Scales explanation -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[10px] text-slate-300 pt-2 border-t border-slate-800">
+            <div class="p-2 rounded-lg bg-emerald-950/40 border border-emerald-500/20">
+              <strong class="text-emerald-400 block font-bold">0 - 20 dB</strong>
+              <span>Audición Normal</span>
+            </div>
+            <div class="p-2 rounded-lg bg-yellow-950/40 border border-yellow-500/20">
+              <strong class="text-yellow-400 block font-bold">21 - 40 dB</strong>
+              <span>Pérdida Leve</span>
+            </div>
+            <div class="p-2 rounded-lg bg-amber-950/40 border border-amber-500/20">
+              <strong class="text-amber-400 block font-bold">41 - 60 dB</strong>
+              <span>Pérdida Moderada</span>
+            </div>
+            <div class="p-2 rounded-lg bg-rose-950/40 border border-rose-500/20">
+              <strong class="text-rose-400 block font-bold">&gt; 60 dB</strong>
+              <span>Pérdida Severa</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinical Recommendation & Action Advice -->
+        <div class="p-5 sm:p-6 rounded-2xl bg-teal-50/70 border border-teal-200/80 space-y-3">
+          <div class="flex items-center gap-2 text-teal-800 font-bold text-sm">
+            <i data-lucide="stethoscope" class="w-4 h-4 text-teal-700"></i>
+            <span>Recomendación del Equipo Audiológico Audivox</span>
+          </div>
+          <p id="result-recommendation-text" class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            Las pérdidas leves a moderadas son exactamente el grado para el que están diseñados los dispositivos digitales con chip de IA y calibración multicanal, ya que amplifican selectivamente las frecuencias de la voz sin amplificar los ruidos molestos.
+          </p>
+        </div>
+
+        <!-- Optional Lead Capture Form to Receive PDF/WhatsApp Report -->
+        <div class="border border-slate-200 rounded-2xl p-5 sm:p-7 bg-white shadow-sm space-y-4">
+          <div class="text-center space-y-1">
+            <h4 class="text-base sm:text-lg font-extrabold text-slate-900">
+              ¿Deseas guardar o recibir tu informe detallado por WhatsApp?
+            </h4>
+            <p class="text-xs text-slate-500">
+              Ingresa tus datos para enviarte una copia de tus resultados y recomendaciones personalizadas.
+            </p>
+          </div>
+
+          <form id="report-lead-form" class="space-y-3 max-w-md mx-auto">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Nombre completo *</label>
+              <input type="text" id="report-name" required placeholder="Ej. Roberto Morales" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm outline-none focus:ring-2 focus:ring-teal-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Celular / WhatsApp (9 dígitos) *</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-xs font-bold text-slate-500 pointer-events-none">🇵🇪 +51</span>
+                <input type="tel" id="report-phone" maxlength="9" required placeholder="987 654 321" class="w-full pl-14 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm outline-none font-mono focus:ring-2 focus:ring-teal-500">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Ciudad *</label>
+              <input type="text" id="report-city" required placeholder="Ej. Lima / Arequipa / Trujillo" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm outline-none focus:ring-2 focus:ring-teal-500">
+            </div>
+            <button type="submit" id="report-submit-btn" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Enviar mi informe a WhatsApp</span>
+            </button>
+            <p id="report-status-msg" class="text-[11px] text-center font-semibold text-emerald-600 hidden"></p>
+          </form>
+        </div>
+
+        <!-- Retake Button -->
+        <div class="text-center pt-2">
+          <button type="button" id="btn-restart-test" class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-teal-700 transition-colors">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>Volver a realizar la prueba</span>
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       3. STANDALONE CLINICAL FOOTER
+       ========================================================================= -->
+  <footer class="bg-white border-t border-slate-200 text-xs text-slate-500 py-8 px-4 sm:px-6 mt-12">
+    <div class="max-w-4xl mx-auto text-center space-y-3">
+      <div class="flex items-center justify-center gap-2 font-bold text-slate-700">
+        <span>Audivox Hearing Health</span>
+        <span>•</span>
+        <span>Tecnología Acústica Digital</span>
+      </div>
+      <p class="text-[11px] text-slate-400 max-w-xl mx-auto">
+        Aviso médico: Esta herramienta interactiva es un test de detección auditiva orientativo y no pretende sustituir un diagnóstico clínico audiológico realizado por un médico otorrinolaringólogo o audioprotesista colegiado.
+      </p>
+      <p class="text-[10px] text-slate-400">
+        © 2026 Audivox.shop · Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       4. INTERACTIVE SOUND GENERATOR & HEARING TEST LOGIC (Pure Web Audio API)
+       ========================================================================= -->
+  <script>
+    (function () {
+      // 1. AudioContext setup
+      let audioCtx = null;
+      function getAudioContext() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContextClass();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      // Helper: Play Pure Tone with Panning & Gain
+      function playTone(frequency, panSide, gainVolume, durationMs = 1200) {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(frequency, ctx.currentTime);
+
+        // Smooth fade-in and fade-out to prevent headphone click/pop
+        const now = ctx.currentTime;
+        gainNode.gain.setValueAtTime(0.0001, now);
+        gainNode.gain.exponentialRampToValueAtTime(Math.max(0.0001, gainVolume), now + 0.08);
+        gainNode.gain.setValueAtTime(Math.max(0.0001, gainVolume), now + (durationMs / 1000) - 0.08);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + (durationMs / 1000));
+
+        // Panning: -1 (Left), 1 (Right), 0 (Center)
+        if (ctx.createStereoPanner) {
+          const panner = ctx.createStereoPanner();
+          panner.pan.setValueAtTime(panSide, now);
+          osc.connect(gainNode);
+          gainNode.connect(panner);
+          panner.connect(ctx.destination);
+        } else {
+          // Fallback if StereoPanner is not supported
+          osc.connect(gainNode);
+          gainNode.connect(ctx.destination);
+        }
+
+        osc.start(now);
+        osc.stop(now + (durationMs / 1000));
+
+        return osc;
+      }
+
+      // 2. Test State & Audiometry Protocol
+      // Frequencies tested in standard screening: 500, 1000, 2000, 4000 Hz
+      const frequencies = [
+        { freq: 1000, name: "1000 Hz (Voz y habla estándar)" },
+        { freq: 2000, name: "2000 Hz (Consonantes medias: T, P, D)" },
+        { freq: 4000, name: "4000 Hz (Consonantes agudas: S, F, Z)" },
+        { freq: 500,  name: "500 Hz (Vocales y graves ambientales)" }
+      ];
+
+      // We test: Left ear 4 freqs, then Right ear 4 freqs -> 8 tones total
+      const toneSteps = [];
+      frequencies.forEach(f => toneSteps.push({ ear: 'left', earLabel: 'Oído Izquierdo', pan: -1, ...f }));
+      frequencies.forEach(f => toneSteps.push({ ear: 'right', earLabel: 'Oído Derecho', pan: 1, ...f }));
+
+      let currentToneIdx = 0;
+      let toneIntensityLevel = 0.02; // Initial moderate reference gain
+
+      // Store detected threshold in dB HL for each tone (estimated)
+      const testResults = {
+        left: { 500: 15, 1000: 15, 2000: 20, 4000: 25 },
+        right: { 500: 15, 1000: 15, 2000: 20, 4000: 25 },
+        questionScore: 0
+      };
+
+      // 3. Questions Pool (Self-assessment questionnaire)
+      const questions = [
+        {
+          q: "¿Te cuesta entender a las personas cuando hay ruido de fondo, como en restaurantes o reuniones familiares?",
+          options: [
+            { text: "Casi nunca o nunca", score: 0 },
+            { text: "A veces, si hay mucho ruido", score: 1 },
+            { text: "A menudo, me cuesta distinguir las palabras", score: 2 },
+            { text: "Siempre o casi siempre", score: 3 }
+          ]
+        },
+        {
+          q: "¿Sueles pedir a tus interlocutores que repitan lo que dijeron o sientes que la gente murmura?",
+          options: [
+            { text: "Rara vez", score: 0 },
+            { text: "Ocasionalmente con personas que hablan bajo", score: 1 },
+            { text: "Frecuentemente durante el día", score: 2 },
+            { text: "Constantemente", score: 3 }
+          ]
+        },
+        {
+          q: "¿Familiares o amigos te han mencionado que pones el volumen del televisor o la radio muy alto?",
+          options: [
+            { text: "No, el volumen siempre es normal", score: 0 },
+            { text: "Alguna vez me lo han comentado", score: 1 },
+            { text: "Sí, a menudo me piden que lo baje", score: 2 },
+            { text: "Sí, casi siempre lo pongo al máximo para entender", score: 3 }
+          ]
+        },
+        {
+          q: "¿Sueles escuchar pitidos, zumbidos o silbidos en tus oídos cuando estás en silencio (tinnitus)?",
+          options: [
+            { text: "No, nunca", score: 0 },
+            { text: "Solo de vez en cuando tras lugares ruidosos", score: 1 },
+            { text: "Frecuentemente al acostarme", score: 2 },
+            { text: "Zumbido permanente todo el día", score: 3 }
+          ]
+        }
+      ];
+
+      let currentQuestionIdx = 0;
+
+      // DOM Elements
+      const phaseIntro = document.getElementById('phase-intro');
+      const phaseCalib = document.getElementById('phase-calibration');
+      const phaseTones = document.getElementById('phase-tones');
+      const phaseQuestions = document.getElementById('phase-questions');
+      const phaseResults = document.getElementById('phase-results');
+
+      const progressBarFill = document.getElementById('progress-bar-fill');
+      const stepNameDisplay = document.getElementById('step-name-display');
+      const stepPercentDisplay = document.getElementById('step-percent-display');
+
+      function setProgress(percent, label) {
+        if (progressBarFill) progressBarFill.style.width = percent + '%';
+        if (stepPercentDisplay) stepPercentDisplay.textContent = percent + '% completado';
+        if (stepNameDisplay) stepNameDisplay.textContent = label;
+      }
+
+      function switchPhase(showEl) {
+        [phaseIntro, phaseCalib, phaseTones, phaseQuestions, phaseResults].forEach(el => {
+          if (el) el.classList.add('hidden');
+        });
+        if (showEl) {
+          showEl.classList.remove('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      // --- 1. INTRO TO CALIBRATION ---
+      const btnStartTest = document.getElementById('btn-start-test');
+      if (btnStartTest) {
+        btnStartTest.addEventListener('click', () => {
+          getAudioContext(); // unlock audio on user gesture
+          switchPhase(phaseCalib);
+          setProgress(30, 'Paso 2: Calibración de Auriculares');
+        });
+      }
+
+      // --- 2. CALIBRATION SOUNDS ---
+      const btnCalibLeft = document.getElementById('btn-play-calib-left');
+      const btnCalibRight = document.getElementById('btn-play-calib-right');
+      const calibLeftStatus = document.getElementById('calib-left-status');
+      const calibRightStatus = document.getElementById('calib-right-status');
+
+      if (btnCalibLeft) {
+        btnCalibLeft.addEventListener('click', () => {
+          playTone(1000, -1, 0.08, 1400);
+          if (calibLeftStatus) {
+            calibLeftStatus.textContent = '✓ Reproduciendo en oído izquierdo...';
+            calibLeftStatus.className = 'text-[11px] font-bold text-sky-600';
+          }
+        });
+      }
+
+      if (btnCalibRight) {
+        btnCalibRight.addEventListener('click', () => {
+          playTone(1000, 1, 0.08, 1400);
+          if (calibRightStatus) {
+            calibRightStatus.textContent = '✓ Reproduciendo en oído derecho...';
+            calibRightStatus.className = 'text-[11px] font-bold text-rose-600';
+          }
+        });
+      }
+
+      const btnToAudiometry = document.getElementById('btn-to-audiometry');
+      if (btnToAudiometry) {
+        btnToAudiometry.addEventListener('click', () => {
+          currentToneIdx = 0;
+          switchPhase(phaseTones);
+          setProgress(45, 'Paso 3: Audiometría de Tonos Puros');
+          loadToneStep(currentToneIdx);
+        });
+      }
+
+      // --- 3. AUDIOMETRY TONE STEPS ---
+      const toneEarBadge = document.getElementById('tone-ear-badge');
+      const toneFreqTitle = document.getElementById('tone-freq-title');
+      const toneStepCounter = document.getElementById('tone-step-counter');
+      const btnReplayCurrentTone = document.getElementById('btn-replay-current-tone');
+      const btnHeardYes = document.getElementById('btn-heard-yes');
+      const btnHeardNo = document.getElementById('btn-heard-no');
+      const tonePulseCircle = document.getElementById('tone-pulse-circle');
+
+      function loadToneStep(idx) {
+        if (idx >= toneSteps.length) {
+          // Finished tones -> Go to Questions
+          startQuestions();
+          return;
+        }
+
+        const item = toneSteps[idx];
+        if (toneStepCounter) toneStepCounter.textContent = `Tono ${idx + 1} de ${toneSteps.length}`;
+        if (toneEarBadge) {
+          toneEarBadge.textContent = item.earLabel;
+          toneEarBadge.className = item.ear === 'left' 
+            ? 'inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-sky-100 text-sky-800 uppercase tracking-wider mb-1'
+            : 'inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-rose-100 text-rose-800 uppercase tracking-wider mb-1';
+        }
+        if (toneFreqTitle) {
+          toneFreqTitle.textContent = `Frecuencia: ${item.name}`;
+        }
+
+        // Calculate current tone gain (simulates dB HL attenuation)
+        // Default calibration sound
+        triggerTonePlayback(item);
+
+        const currentPct = 45 + Math.round((idx / toneSteps.length) * 30);
+        setProgress(currentPct, `Paso 3: Audiometría (${idx + 1}/${toneSteps.length})`);
+      }
+
+      function triggerTonePlayback(item) {
+        if (tonePulseCircle) tonePulseCircle.classList.add('pulse-ring');
+        // Play tone at calculated gain
+        playTone(item.freq, item.pan, 0.035, 1300);
+
+        setTimeout(() => {
+          if (tonePulseCircle) tonePulseCircle.classList.remove('pulse-ring');
+        }, 1350);
+      }
+
+      if (btnReplayCurrentTone) {
+        btnReplayCurrentTone.addEventListener('click', () => {
+          if (currentToneIdx < toneSteps.length) {
+            triggerTonePlayback(toneSteps[currentToneIdx]);
+          }
+        });
+      }
+
+      if (btnHeardYes) {
+        btnHeardYes.addEventListener('click', () => {
+          const item = toneSteps[currentToneIdx];
+          // Good sensitivity: 15 to 20 dB HL
+          testResults[item.ear][item.freq] = 15;
+          currentToneIdx++;
+          loadToneStep(currentToneIdx);
+        });
+      }
+
+      if (btnHeardNo) {
+        btnHeardNo.addEventListener('click', () => {
+          const item = toneSteps[currentToneIdx];
+          // Reduced sensitivity: ~35 to 55 dB HL depending on frequency
+          const lossEstimate = item.freq >= 2000 ? 45 : 35;
+          testResults[item.ear][item.freq] = lossEstimate;
+          currentToneIdx++;
+          loadToneStep(currentToneIdx);
+        });
+      }
+
+      // --- 4. QUESTIONS PHASE ---
+      function startQuestions() {
+        currentQuestionIdx = 0;
+        switchPhase(phaseQuestions);
+        loadQuestion(currentQuestionIdx);
+      }
+
+      const qNumberDisplay = document.getElementById('q-number-display');
+      const qTitle = document.getElementById('q-title');
+      const qOptionsContainer = document.getElementById('q-options-container');
+
+      function loadQuestion(idx) {
+        if (idx >= questions.length) {
+          // Finished all questions -> Render Results!
+          renderFinalResults();
+          return;
+        }
+
+        const qData = questions[idx];
+        if (qNumberDisplay) qNumberDisplay.textContent = `${idx + 1}`;
+        if (qTitle) qTitle.textContent = qData.q;
+
+        const currentPct = 78 + Math.round((idx / questions.length) * 18);
+        setProgress(currentPct, `Paso 4: Situaciones Reales (${idx + 1}/${questions.length})`);
+
+        if (qOptionsContainer) {
+          qOptionsContainer.innerHTML = '';
+          qData.options.forEach((opt, optIdx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'w-full text-left p-4 rounded-xl border border-slate-200 hover:border-teal-500 bg-slate-50/50 hover:bg-teal-50/50 transition-all font-medium text-xs sm:text-sm text-slate-800 flex items-center justify-between group active:scale-[0.99]';
+            btn.innerHTML = `
+              <span>${opt.text}</span>
+              <span class="w-5 h-5 rounded-full border border-slate-300 group-hover:border-teal-600 group-hover:bg-teal-600 flex items-center justify-center text-white text-xs">✓</span>
+            `;
+            btn.addEventListener('click', () => {
+              testResults.questionScore += opt.score;
+              currentQuestionIdx++;
+              loadQuestion(currentQuestionIdx);
+            });
+            qOptionsContainer.appendChild(btn);
+          });
+        }
+      }
+
+      // --- 5. RENDER RESULTS & AUDIOGRAM ---
+      function renderFinalResults() {
+        switchPhase(phaseResults);
+        setProgress(100, 'Diagnóstico Completado');
+
+        // Calculate average loss for left and right ears
+        const freqs = [500, 1000, 2000, 4000];
+        const leftAvg = freqs.reduce((acc, f) => acc + testResults.left[f], 0) / freqs.length;
+        const rightAvg = freqs.reduce((acc, f) => acc + testResults.right[f], 0) / freqs.length;
+        const overallAvg = (leftAvg + rightAvg) / 2;
+
+        const diagTitle = document.getElementById('result-diagnosis-title');
+        const diagDesc = document.getElementById('result-diagnosis-desc');
+        const diagBox = document.getElementById('result-diagnosis-box');
+        const iconBadge = document.getElementById('result-icon-badge');
+        const recText = document.getElementById('result-recommendation-text');
+
+        // Classify Clinical Result
+        if (overallAvg <= 20 && testResults.questionScore <= 3) {
+          // Normal hearing
+          if (diagTitle) diagTitle.textContent = "Audición en Rango Normal (0 a 20 dB)";
+          if (diagDesc) diagDesc.textContent = "Excelente sensibilidad. Tus umbrales en frecuencias graves, medias y agudas se encuentran dentro de los parámetros auditivos saludables. No se aprecian signos de deterioro auditivo significativo.";
+          if (diagBox) diagBox.className = "p-5 sm:p-6 rounded-2xl border-2 border-emerald-200 bg-emerald-50/60 flex flex-col sm:flex-row items-center gap-4 sm:gap-5";
+          if (iconBadge) iconBadge.className = "w-14 h-14 rounded-2xl bg-emerald-600 flex items-center justify-center flex-shrink-0 text-white font-black text-lg";
+          if (recText) recText.textContent = "Tu capacidad auditiva es óptima. Te recomendamos proteger tus oídos de ruidos intensos y realizar un chequeo preventivo cada 12 a 18 meses.";
+        } else if (overallAvg <= 40 || testResults.questionScore <= 7) {
+          // Mild loss
+          if (diagTitle) diagTitle.textContent = "Pérdida Auditiva Leve (21 a 40 dB)";
+          if (diagDesc) diagDesc.textContent = "Se observa una disminución sutil en frecuencias agudas (2000 - 4000 Hz). Es común que comiences a perder la nitidez de consonantes suaves (s, f, t) y tengas que esforzarte más para seguir conversaciones en reuniones familiares o con ruido de fondo.";
+          if (diagBox) diagBox.className = "p-5 sm:p-6 rounded-2xl border-2 border-amber-200 bg-amber-50/60 flex flex-col sm:flex-row items-center gap-4 sm:gap-5";
+          if (iconBadge) iconBadge.className = "w-14 h-14 rounded-2xl bg-amber-500 flex items-center justify-center flex-shrink-0 text-white font-black text-lg";
+          if (recText) recText.textContent = "La pérdida auditiva leve responde de manera sobresaliente a audífonos digitales con chip de IA como el Micro-RIC 16X, ya que compensan con precisión milimétrica las frecuencias atenuadas sin sobreamplificar ruidos ambientales.";
+        } else {
+          // Moderate or significant loss
+          if (diagTitle) diagTitle.textContent = "Pérdida Auditiva Moderada (41 a 60 dB)";
+          if (diagDesc) diagDesc.textContent = "Tus respuestas y tonos indican una pérdida auditiva moderada notable tanto en frecuencias de conversación como en agudos. Se requiere subir considerablemente el volumen de televisores y suele ser difícil entender palabras sin mirar los labios de la persona.";
+          if (diagBox) diagBox.className = "p-5 sm:p-6 rounded-2xl border-2 border-orange-200 bg-orange-50/60 flex flex-col sm:flex-row items-center gap-4 sm:gap-5";
+          if (iconBadge) iconBadge.className = "w-14 h-14 rounded-2xl bg-orange-600 flex items-center justify-center flex-shrink-0 text-white font-black text-lg";
+          if (recText) recText.textContent = "Es fundamental no retrasar la adaptación de un dispositivo auditivo digital. Una pérdida moderada no tratada genera fatiga cerebral y aislamiento social. Los audífonos con calibración por App y supresión de feedback son la solución clínica recomendada.";
+        }
+
+        // Draw the SVG Audiogram
+        drawAudiogramSvg(testResults);
+      }
+
+      function drawAudiogramSvg(results) {
+        const svg = document.getElementById('audiogram-svg');
+        if (!svg) return;
+
+        // Graph geometry
+        const padX = 60;
+        const padY = 30;
+        const width = 520;
+        const height = 280;
+        const graphW = width - padX - 30;
+        const graphH = height - padY - 30;
+
+        // Frequencies X mapping: 500, 1000, 2000, 4000
+        const freqX = {
+          500:  padX + graphW * 0.12,
+          1000: padX + graphW * 0.38,
+          2000: padX + graphW * 0.65,
+          4000: padX + graphW * 0.92
+        };
+
+        // dB Y mapping: 0 dB to 80 dB (Standard Audiogram: top is 0 dB, bottom is 80 dB)
+        function getY(db) {
+          const clamped = Math.max(0, Math.min(80, db));
+          return padY + (clamped / 80) * graphH;
+        }
+
+        let svgHtml = `
+          <!-- Background zones -->
+          <rect x="${padX}" y="${getY(0)}" width="${graphW}" height="${getY(20) - getY(0)}" fill="#064e3b" opacity="0.15" />
+          <rect x="${padX}" y="${getY(20)}" width="${graphW}" height="${getY(40) - getY(20)}" fill="#78350f" opacity="0.15" />
+          <rect x="${padX}" y="${getY(40)}" width="${graphW}" height="${getY(60) - getY(40)}" fill="#7c2d12" opacity="0.18" />
+          <rect x="${padX}" y="${getY(60)}" width="${graphW}" height="${getY(80) - getY(60)}" fill="#881337" opacity="0.22" />
+
+          <!-- Zone labels -->
+          <text x="${width - 35}" y="${getY(10)}" fill="#34d399" font-size="9" text-anchor="end" font-weight="bold">Normal</text>
+          <text x="${width - 35}" y="${getY(30)}" fill="#fbbf24" font-size="9" text-anchor="end" font-weight="bold">Leve</text>
+          <text x="${width - 35}" y="${getY(50)}" fill="#fb923c" font-size="9" text-anchor="end" font-weight="bold">Moderada</text>
+          <text x="${width - 35}" y="${getY(70)}" fill="#f87171" font-size="9" text-anchor="end" font-weight="bold">Severa</text>
+
+          <!-- Grid Lines Horizontal (dB HL) -->
+        `;
+
+        [0, 20, 40, 60, 80].forEach(db => {
+          const y = getY(db);
+          svgHtml += `
+            <line x1="${padX}" y1="${y}" x2="${padX + graphW}" y2="${y}" stroke="#334155" stroke-width="1" stroke-dasharray="${db === 20 ? 'none' : '2,2'}" />
+            <text x="${padX - 10}" y="${y + 3}" fill="#94a3b8" font-size="10" text-anchor="end" font-mono font-weight="bold">${db} dB</text>
+          `;
+        });
+
+        // Grid Lines Vertical (Frequencies)
+        Object.entries(freqX).forEach(([freq, x]) => {
+          svgHtml += `
+            <line x1="${x}" y1="${padY}" x2="${x}" y2="${padY + graphH}" stroke="#334155" stroke-width="1" />
+            <text x="${x}" y="${padY + graphH + 18}" fill="#94a3b8" font-size="11" text-anchor="middle" font-weight="bold">${freq} Hz</text>
+          `;
+        });
+
+        // Left ear points (Blue, cross 'X')
+        const leftCoords = [500, 1000, 2000, 4000].map(f => ({ x: freqX[f], y: getY(results.left[f]) }));
+        const leftPath = leftCoords.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${pt.x} ${pt.y}`).join(' ');
+
+        svgHtml += `
+          <!-- Left Ear Path -->
+          <path d="${leftPath}" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="none" />
+        `;
+        leftCoords.forEach(pt => {
+          svgHtml += `
+            <line x1="${pt.x - 5}" y1="${pt.y - 5}" x2="${pt.x + 5}" y2="${pt.y + 5}" stroke="#38bdf8" stroke-width="2.5" />
+            <line x1="${pt.x - 5}" y1="${pt.y + 5}" x2="${pt.x + 5}" y2="${pt.y - 5}" stroke="#38bdf8" stroke-width="2.5" />
+          `;
+        });
+
+        // Right ear points (Red/Rose, circle 'O')
+        const rightCoords = [500, 1000, 2000, 4000].map(f => ({ x: freqX[f], y: getY(results.right[f]) }));
+        const rightPath = rightCoords.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${pt.x} ${pt.y}`).join(' ');
+
+        svgHtml += `
+          <!-- Right Ear Path -->
+          <path d="${rightPath}" fill="none" stroke="#fb7185" stroke-width="2.5" />
+        `;
+        rightCoords.forEach(pt => {
+          svgHtml += `
+            <circle cx="${pt.x}" cy="${pt.y}" r="5" fill="#0f172a" stroke="#fb7185" stroke-width="2.5" />
+          `;
+        });
+
+        svg.innerHTML = svgHtml;
+      }
+
+      // --- 6. LEAD FORM SUBMIT ---
+      const reportLeadForm = document.getElementById('report-lead-form');
+      const reportSubmitBtn = document.getElementById('report-submit-btn');
+      const reportStatusMsg = document.getElementById('report-status-msg');
+
+      if (reportLeadForm) {
+        reportLeadForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const name = document.getElementById('report-name').value.trim();
+          const phone = document.getElementById('report-phone').value.trim();
+          const city = document.getElementById('report-city').value.trim();
+
+          if (!name || !phone || !city) return;
+
+          const origBtn = reportSubmitBtn.innerHTML;
+          reportSubmitBtn.disabled = true;
+          reportSubmitBtn.innerHTML = `
+            <svg class="w-4 h-4 mr-2 animate-spin text-white inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+            <span>Generando informe...</span>
+          `;
+
+          const payload = {
+            nombre: name,
+            whatsapp: phone,
+            ciudad: city,
+            fuente: 'test_auditivo_audivox',
+            fecha: new Date().toISOString(),
+            testData: {
+              leftAvg: (testResults.left[500] + testResults.left[1000] + testResults.left[2000] + testResults.left[4000]) / 4,
+              rightAvg: (testResults.right[500] + testResults.right[1000] + testResults.right[2000] + testResults.right[4000]) / 4,
+              questionScore: testResults.questionScore
+            }
+          };
+
+          const N8N_URL = 'https://n8n.conecta2.lat/webhook/audical-lista-espera';
+
+          try {
+            await fetch(N8N_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+          } catch (err) {
+            console.warn('n8n error:', err);
+          } finally {
+            reportSubmitBtn.disabled = false;
+            reportSubmitBtn.innerHTML = origBtn;
+            if (reportStatusMsg) {
+              reportStatusMsg.textContent = '✓ ¡Informe registrado con éxito! Te escribiremos por WhatsApp con tus recomendaciones.';
+              reportStatusMsg.classList.remove('hidden');
+            }
+            reportLeadForm.reset();
+          }
+        });
+      }
+
+      // Restart test
+      const btnRestartTest = document.getElementById('btn-restart-test');
+      if (btnRestartTest) {
+        btnRestartTest.addEventListener('click', () => {
+          currentToneIdx = 0;
+          currentQuestionIdx = 0;
+          testResults.questionScore = 0;
+          switchPhase(phaseIntro);
+          setProgress(20, 'Paso 1: Preparación');
+        });
+      }
+
+      // Initial Lucide Icons
+      if (window.lucide) window.lucide.createIcons();
+    })();
+  </script>
+</body>
+</html>
