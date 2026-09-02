@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   
-  <!-- Pre-launch Redirection Safeguard: En producción redirige a lista de espera a menos que tenga ?preview=true o esté en local -->
+  <!-- Pre-launch Redirection Safeguard: En producción redirige a lista de espera. Solo accesible en entorno local (cualquier puerto) -->
   <script>
     (function () {
-      var h = window.location.hostname;
-      var isDev = h === 'localhost' || h === '127.0.0.1' || h.endsWith('.local') || window.location.port !== '';
-      var hasPreview = window.location.search.indexOf('preview') !== -1;
-      if (!isDev && !hasPreview) {
+      var isLocal = /^(localhost|127\.0\.0\.1|0\.0\.0\.0|.*\.local)$/i.test(window.location.hostname) || window.location.protocol === 'file:';
+      if (!isLocal) {
         window.location.replace('/ric/espera');
       }
     })();

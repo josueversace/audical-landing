@@ -11,35 +11,12 @@
     {
       "source": "/ric",
       "destination": "/ric/espera",
-      "permanent": false,
-      "missing": [
-        {
-          "type": "query",
-          "key": "preview"
-        }
-      ]
+      "permanent": false
     },
     {
       "source": "/otc",
       "destination": "/espera",
-      "permanent": false,
-      "missing": [
-        {
-          "type": "query",
-          "key": "preview"
-        }
-      ]
-    },
-    {
-      "source": "/",
-      "destination": "/ric/espera",
-      "permanent": false,
-      "missing": [
-        {
-          "type": "query",
-          "key": "preview"
-        }
-      ]
+      "permanent": false
     }
   ],
   "headers": [

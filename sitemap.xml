@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://audivox.shop/</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://audivox.shop/otc</loc>
-    <lastmod>2026-08-28</lastmod>
+    <loc>https://audivox.shop/ric/espera</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://audivox.shop/ric</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://audivox.shop/espera</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://audivox.shop/lista-espera</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <loc>https://audivox.shop/prueba-auditiva</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://audivox.shop/ric/lista-espera</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <loc>https://audivox.shop/simulador-auditivo</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
