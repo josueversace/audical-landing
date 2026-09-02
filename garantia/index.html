@@ -16,16 +16,6 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            brand: {
-              navy: '#0f172a',
-              blue: '#1e3a8a',
-              teal: '#0d9488',
-              tealhover: '#0f766e',
-              emerald: '#059669',
-              slate: '#f8fafc',
-            }
-          },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           }
@@ -51,17 +41,17 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-teal-500 selection:text-white">
+<body class="bg-white text-slate-800 min-h-screen flex flex-col antialiased">
 
   <!-- Navigation Header -->
-  <header class="bg-white border-b border-slate-200/90 sticky top-0 z-40 shadow-xs">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
-      <a href="/" class="flex items-center group py-0.5" aria-label="Audivox Perú Inicio">
-        <img src="/assets/images/logo_audivox_desktop.webp" alt="Audivox.shop" class="h-8 sm:h-9 w-auto object-contain">
+  <header class="border-b border-slate-200 sticky top-0 bg-white/95 backdrop-blur-sm z-40">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center" aria-label="Audivox Perú Inicio">
+        <img src="/assets/images/logo_audivox_desktop.webp" alt="Audivox.shop" class="h-8 w-auto object-contain">
       </a>
-      <a href="/" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-teal-700 hover:text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 px-3 py-1.5 rounded-lg transition-colors">
+      <a href="/" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
-        <span>Volver a la tienda</span>
+        <span>Volver al inicio</span>
       </a>
     </div>
   </header>
@@ -71,14 +61,11 @@
     
     <!-- Title & Date -->
     <div class="border-b border-slate-200 pb-6 mb-8">
-      <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md border border-teal-200">
-        Respaldo y Calidad Oficial
-      </span>
-      <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight mt-3 mb-2">
+      <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2">
         Política de Garantía y Devoluciones
       </h1>
-      <p class="text-xs sm:text-sm text-slate-500">
-        Términos de servicio técnico, bioseguridad y derecho de desistimiento · República del Perú
+      <p class="text-xs text-slate-500">
+        Última actualización: Septiembre de 2026 · Ámbito: República del Perú
       </p>
     </div>
 
@@ -86,109 +73,94 @@
     <div class="space-y-8 text-xs sm:text-sm text-slate-700 leading-relaxed">
       
       <!-- 1. Alcance de la Garantía -->
-      <section class="space-y-3">
-        <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-xs font-black">1</span>
-          <span>Alcance de la Garantía de Fábrica (12 Meses)</span>
+      <section class="space-y-2.5">
+        <h2 class="text-base sm:text-lg font-bold text-slate-900">
+          1. Alcance de la Garantía de Fábrica (12 Meses)
         </h2>
         <p>
-          Todos los dispositivos auditivos comercializados por <strong class="text-slate-900">Audivox Perú</strong> cuentan con una <strong class="text-slate-900">Garantía de Fábrica por un periodo de doce (12) meses</strong> computados a partir de la fecha de recepción del producto por parte del cliente.
+          Los dispositivos auditivos comercializados por <strong class="text-slate-900">Audivox Perú</strong> cuentan con una garantía comercial de fábrica por un periodo de doce (12) meses computados desde la fecha de recepción del pedido por parte del cliente.
         </p>
         <p>
-          Esta garantía cubre única y exclusivamente <strong class="text-slate-900">defectos o vicios ocultos de fabricación</strong> en los componentes electrónicos internos (chip procesador DSP, micrófono interno, módulo de carga del estuche o fallo prematuro de la batería recargable que no retenga carga).
+          Esta garantía cubre exclusivamente <strong class="text-slate-900">defectos o fallas de fabricación internos</strong> comprobables en sus componentes electrónicos (chip procesador DSP, micrófono interno, módulo de carga del estuche o defecto de fábrica en la retención de carga de la batería).
         </p>
       </section>
 
       <!-- 2. Exclusiones Taxativas -->
-      <section class="space-y-3">
-        <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-xs font-black">2</span>
-          <span>Exclusiones Expresas de la Garantía</span>
+      <section class="space-y-2.5">
+        <h2 class="text-base sm:text-lg font-bold text-slate-900">
+          2. Exclusiones Expresas de la Garantía
         </h2>
         <p>
-          La garantía quedará sin efecto de manera inmediata y no cubrirá reparaciones ni reposiciones en los siguientes supuestos:
+          La garantía no resultará aplicable y quedará sin efecto en cualquiera de los siguientes casos:
         </p>
-        <div class="bg-slate-100 rounded-2xl p-4.5 border border-slate-200/90 space-y-2.5">
-          <ul class="list-disc pl-5 space-y-2 text-slate-700">
-            <li>
-              <strong class="text-slate-900">Daños por impacto físico o mecánico:</strong> Golpes, caídas accidentales, aplastamiento, carcasas rajadas o pines de carga forzados por mala manipulación.
-            </li>
-            <li>
-              <strong class="text-slate-900">Contacto con líquidos y humedad:</strong> Daños por agua, lluvia, ducha, piscina o sudoración excesiva acumulada. Los dispositivos electrónicos no son sumergibles.
-            </li>
-            <li>
-              <strong class="text-slate-900">Obstrucción por cerumen o suciedad:</strong> El bloqueo del receptor acústico, filtro anticerumen o micrófono por falta de limpieza periódica no es una falla técnica de fábrica, sino una falta de mantenimiento preventivo por parte del usuario.
-            </li>
-            <li>
-              <strong class="text-slate-900">Manipulación no autorizada:</strong> Equipos que hayan sido abiertos, manipulados, reparados o alterados por el usuario o personal técnico no autorizado por Audivox.
-            </li>
-            <li>
-              <strong class="text-slate-900">Desgaste natural de consumibles:</strong> No están cubiertos por la garantía los elementos de desgaste ordinario, tales como cúpulas de silicona, filtros protectores de cera, cepillos de limpieza ni cables USB.
-            </li>
-            <li>
-              <strong class="text-slate-900">Incompatibilidad audiológica previa:</strong> Los audífonos están diseñados para pérdidas de audición leves a moderadas. La falta de adaptación provocada por una pérdida severa, profunda o asimétrica no valorada clínicamente no califica como defecto de fabricación.
-            </li>
-          </ul>
-        </div>
+        <ul class="list-disc pl-5 space-y-1.5 text-slate-700">
+          <li>
+            <strong class="text-slate-900">Daños por impacto físico o mecánico:</strong> Golpes, caídas, aplastamiento, carcasas rotas, fisuras o conectores de carga forzados por uso inadecuado.
+          </li>
+          <li>
+            <strong class="text-slate-900">Contacto con líquidos y humedad:</strong> Daños por inmersión en agua, sudor acumulado, lluvia o exposición a ambientes húmedos. Los dispositivos no son sumergibles.
+          </li>
+          <li>
+            <strong class="text-slate-900">Obstrucción por cerumen o suciedad:</strong> El bloqueo o disminución de volumen ocasionado por la acumulación de cerumen o residuos en los filtros o auriculares es consecuencia de una falta de limpieza y mantenimiento habitual, no un defecto técnico de fábrica.
+          </li>
+          <li>
+            <strong class="text-slate-900">Manipulación no autorizada:</strong> Desarmado, alteración o intervención técnica realizada por el cliente o terceros no autorizados.
+          </li>
+          <li>
+            <strong class="text-slate-900">Desgaste natural de consumibles:</strong> Cúpulas de silicona, filtros protectores de cera, cepillos y cables de carga, los cuales están sujetos a recambio periódico por uso regular.
+          </li>
+          <li>
+            <strong class="text-slate-900">Incompatibilidad audiológica:</strong> Los dispositivos están calibrados para pérdidas auditivas de leves a moderadas. La falta de adaptación derivada de pérdidas severas o profundas no diagnosticadas previamente no califica como defecto del equipo.
+          </li>
+        </ul>
       </section>
 
       <!-- 3. Soporte Digital y Asistencia Remota -->
-      <section class="space-y-3">
-        <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-xs font-black">3</span>
-          <span>Modelo de Soporte y Asistencia Técnica Remota</span>
+      <section class="space-y-2.5">
+        <h2 class="text-base sm:text-lg font-bold text-slate-900">
+          3. Soporte Técnico y Asistencia Digital
         </h2>
         <p>
-          Para mantener la máxima eficiencia de costos en beneficio de nuestros clientes, el servicio de atención técnica de Audivox es <strong class="text-slate-900">100% digital y continuo a través de WhatsApp</strong>.
+          La atención técnica de Audivox se brinda de manera remota a través de nuestros canales oficiales de mensajería (WhatsApp) y correo electrónico (<strong class="text-slate-900">contacto@audivox.shop</strong>).
         </p>
         <p>
-          Antes de cualquier envío físico, nuestro equipo especializado guiará al cliente mediante <strong class="text-slate-900">videotutoriales paso a paso, guías fotográficas y asistencia remota</strong> para descartar problemas comunes (como colocación incorrecta del domo, calibración de frecuencia por App móvil o limpieza de cerumen acumulado), logrando resolver más del 90% de las consultas sin necesidad de trasladar el equipo.
+          Antes de cualquier evaluación presencial, nuestro equipo asistirá al usuario mediante guías paso a paso y material audiovisual para resolver dudas de colocación, calibración por App y técnicas de limpieza preventiva.
         </p>
       </section>
 
       <!-- 4. Procedimiento de Evaluación Técnica -->
-      <section class="space-y-3">
-        <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-xs font-black">4</span>
-          <span>Procedimiento para Reclamos de Garantía</span>
+      <section class="space-y-2.5">
+        <h2 class="text-base sm:text-lg font-bold text-slate-900">
+          4. Procedimiento para Reclamos de Garantía
         </h2>
         <p>
-          En caso de que las pruebas remotas indiquen una probable falla técnica interna de fábrica:
+          En caso de persistir un indicio comprobable de fallo interno de fabricación:
         </p>
-        <ol class="list-decimal pl-5 space-y-2 text-slate-700">
-          <li>El cliente remitirá un video claro que evidencie la falla al WhatsApp oficial o al correo <strong class="text-teal-700">contacto@audivox.shop</strong> junto con su nombre y número de pedido.</li>
-          <li>Una vez pre-aprobada la revisión técnica, el cliente enviará el dispositivo debidamente protegido con todos sus accesorios a nuestro centro de servicio técnico en Lima. Los gastos de envío hacia Lima serán asumidos por el cliente.</li>
-          <li>El equipo técnico realizará la inspección en un plazo de tres (3) a cinco (5) días hábiles.</li>
-          <li>Si se constata fehacientemente un defecto de fabricación, Audivox reparará el equipo o suministrará un reemplazo totalmente nuevo sin costo adicional, cubriendo los gastos de retorno al domicilio del cliente.</li>
-          <li>Si el dictamen técnico determina que la falla fue provocada por mal uso, humedad, cerumen o caídas (exclusiones de garantía), se informará al cliente y los costos de retorno correrán a su cargo.</li>
+        <ol class="list-decimal pl-5 space-y-1.5 text-slate-700">
+          <li>El cliente comunicará la incidencia a <strong class="text-slate-900">contacto@audivox.shop</strong> o al WhatsApp de soporte adjuntando un video que muestre la situación y los datos de compra.</li>
+          <li>Tras la evaluación preliminar, se indicará el envío del equipo con todos sus accesorios a la oficina técnica en Lima. Los gastos de flete hacia Lima corresponden al cliente.</li>
+          <li>El equipo será revisado en un plazo de tres (3) a cinco (5) días hábiles tras su recepción.</li>
+          <li>De confirmarse el defecto de fabricación, se procederá a la reparación o reemplazo sin costo adicional, cubriendo Audivox el flete de retorno al cliente.</li>
+          <li>Si el análisis determina que el fallo se debió a mal uso, humedad, cerumen o caídas (exclusiones de garantía), se emitirá el reporte correspondiente y el retorno correrá por cuenta del usuario.</li>
         </ol>
       </section>
 
       <!-- 5. Derecho de Desistimiento y Bioseguridad -->
-      <section class="space-y-3">
-        <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-xs font-black">5</span>
-          <span>Derecho de Desistimiento, Higiene y Devoluciones</span>
+      <section class="space-y-2.5">
+        <h2 class="text-base sm:text-lg font-bold text-slate-900">
+          5. Derecho de Desistimiento y Devoluciones
         </h2>
-        
-        <div class="bg-rose-50/90 border border-rose-200 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-rose-950 flex items-center gap-1.5 text-xs sm:text-sm">
-            <i data-lucide="shield-alert" class="w-4 h-4 text-rose-700"></i>
-            <span>Protocolo Estricto de Bioseguridad e Higiene Sanitaria</span>
-          </p>
-          <p class="text-xs text-rose-900 leading-normal">
-            Los audífonos son <strong>dispositivos médicos intrauditivos de uso íntimo y personal</strong> que entran en contacto directo con fluidos corporales, secreciones y el conducto auditivo interno. Por razones de higiene pública y seguridad biológica, <strong>NO se admiten devoluciones ni reembolsos por mero cambio de opinión, arrepentimiento o apreciación subjetiva</strong> una vez que el empaque haya sido abierto, desprecintado o el producto haya sido probado en el oído.
-          </p>
-        </div>
-
         <p>
-          El <strong class="text-slate-900">Derecho de Desistimiento</strong> procede única y exclusivamente bajo las siguientes condiciones estrictas:
+          Por tratarse de <strong class="text-slate-900">dispositivos intrauditivos médicos de uso personal e íntimo</strong> en contacto directo con el canal auditivo y secreciones corporales, por razones estrictas de higiene y bioseguridad, <strong class="text-slate-900">no se admiten devoluciones ni reembolsos por cambio de opinión, arrepentimiento o preferencias subjetivas de confort</strong> una vez abierto el empaque, vulnerado el precinto o utilizado el producto.
+        </p>
+        <p>
+          El derecho de desistimiento podrá ejercerse únicamente si se cumplen en su totalidad las siguientes condiciones:
         </p>
         <ul class="list-disc pl-5 space-y-1.5 text-slate-700">
-          <li>Debe ser solicitado por escrito a <strong class="text-teal-700">contacto@audivox.shop</strong> dentro de los <strong class="text-slate-900">primeros siete (7) días naturales</strong> contados desde la recepción del paquete.</li>
-          <li>El producto debe encontrarse <strong class="text-slate-900">100% nuevo, sellado de fábrica, con su celofán y precintos de seguridad intactos</strong>, en su embalaje original sin abrir ni deteriorar.</li>
-          <li>Los costos de flete, transporte y comisiones de mensajería generados por la devolución correrán por cuenta y riesgo exclusivo del comprador.</li>
-          <li>Los kits de limpieza, accesorios complementarios, consumibles y paquetes de cúpulas adicionales son considerados de <strong>venta final no reembolsable</strong> por motivos de bioseguridad.</li>
+          <li>La solicitud debe realizarse por escrito a <strong class="text-slate-900">contacto@audivox.shop</strong> dentro de un plazo máximo e improrrogable de <strong class="text-slate-900">tres (3) días naturales</strong> contados desde la recepción del producto.</li>
+          <li>El producto debe encontrarse nuevo, en su empaque original cerrado de fábrica, sin abrir y con todos sus sellos de seguridad intactos.</li>
+          <li>Los gastos de envío, flete y comisiones de mensajería generados por la devolución corren a cargo exclusivo del comprador.</li>
+          <li>Los accesorios de higiene, cúpulas de silicona adicionales y kits de limpieza se consideran de venta final no retornable.</li>
         </ul>
       </section>
 
@@ -197,15 +169,15 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 text-xs text-slate-500 py-6 px-4">
+  <footer class="border-t border-slate-200 text-xs text-slate-500 py-6 px-4">
     <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
       <p>© 2026 Audivox Perú · audivox.shop · Todos los derechos reservados.</p>
       <div class="flex items-center gap-4 text-slate-600">
-        <a href="/terminos" class="hover:text-teal-700 transition-colors">Términos</a>
+        <a href="/terminos" class="hover:text-slate-900 transition-colors">Términos</a>
         <span>•</span>
-        <a href="/privacidad" class="hover:text-teal-700 transition-colors">Privacidad</a>
+        <a href="/privacidad" class="hover:text-slate-900 transition-colors">Privacidad</a>
         <span>•</span>
-        <a href="/garantia" class="font-bold text-teal-700">Garantía</a>
+        <a href="/garantia" class="font-bold text-slate-900">Garantía</a>
       </div>
     </div>
   </footer>
