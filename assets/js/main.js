@@ -524,6 +524,15 @@ function initFormHandling() {
         submitBtn.innerHTML = originalBtnContent;
       }
 
+      // Meta Pixel Purchase Event
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Purchase', {
+          content_name: packageText,
+          value: packagePrice,
+          currency: 'PEN'
+        });
+      }
+
       // Mostrar modal de éxito
       if (modal) {
         modal.classList.remove('hidden');
