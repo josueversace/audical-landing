@@ -440,7 +440,7 @@ function initFormHandling() {
     if (modalPkg) modalPkg.textContent = packageText;
 
     // Generate WhatsApp URL with prefilled order
-    const whatsappNumber = "51987654321"; // Peru business WhatsApp number
+    const whatsappNumber = "51927830022"; // Peru business WhatsApp number
     const whatsappMessage = encodeURIComponent(
       `👋 ¡Hola Audivox! Acabo de registrar mi pedido en la web con Pago Contra Entrega:\n\n` +
       `👤 *Cliente:* ${name}\n` +
