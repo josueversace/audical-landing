@@ -1830,6 +1830,7 @@
                      placeholder="987 654 321" 
                      class="w-full pl-14 sm:pl-16 pr-3.5 sm:pr-4 py-2.5 sm:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-xs sm:text-sm outline-none transition-all font-mono placeholder:text-slate-400 bg-slate-50/40 focus:bg-white font-medium">
             </div>
+            <p id="waitlist-phone-error" class="hidden text-rose-600 text-[11px] font-medium mt-1.5 flex items-center gap-1"></p>
             <p class="text-[11px] text-slate-500 mt-1.5 flex items-center gap-1.5">
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i>
               <span>Privacidad 100% garantizada. Cero spam: solo te escribiremos una vez para informarte de la apertura de cupos.</span>
@@ -2234,13 +2235,64 @@
       const waitlistModal = document.getElementById('waitlist-success-modal');
       const closeWaitlistBtn = document.getElementById('close-waitlist-modal-btn');
       const phoneInput = document.getElementById('waitlist-phone');
+      const phoneError = document.getElementById('waitlist-phone-error');
       const whatsappBtn = document.getElementById('modal-waitlist-whatsapp-btn');
 
+      function validatePeruvianPhone(val) {
+        if (!val) return { valid: false, msg: 'Por favor complete su número de celular.' };
+        if (!val.startsWith('9')) return { valid: false, msg: '⚠️ El celular debe comenzar con el dígito 9 (Perú).' };
+        if (val.length !== 9) return { valid: false, msg: '⚠️ El celular debe tener 9 dígitos (faltan dígitos).' };
+        if (/^(\d)\1{8}$/.test(val)) return { valid: false, msg: '⚠️ Ingrese un número de celular real y activo.' };
+        return { valid: true };
+      }
+
+      function setPhoneErrorState(input, errorEl, msg) {
+        if (errorEl) {
+          errorEl.textContent = msg;
+          errorEl.classList.remove('hidden');
+        }
+        if (input) {
+          input.classList.add('border-rose-500', 'focus:ring-rose-500', 'focus:border-rose-500');
+          input.classList.remove('border-slate-300', 'focus:ring-teal-500', 'focus:border-teal-500');
+        }
+      }
+
+      function clearPhoneErrorState(input, errorEl) {
+        if (errorEl) {
+          errorEl.textContent = '';
+          errorEl.classList.add('hidden');
+        }
+        if (input) {
+          input.classList.remove('border-rose-500', 'focus:ring-rose-500', 'focus:border-rose-500');
+          input.classList.add('border-slate-300', 'focus:ring-teal-500', 'focus:border-teal-500');
+        }
+      }
+
       if (phoneInput) {
+        phoneInput.addEventListener('blur', () => {
+          const val = phoneInput.value.trim();
+          if (val.length === 0) return;
+          const res = validatePeruvianPhone(val);
+          if (!res.valid) {
+            setPhoneErrorState(phoneInput, phoneError, res.msg);
+          } else {
+            clearPhoneErrorState(phoneInput, phoneError);
+          }
+        });
+
         phoneInput.addEventListener('input', (e) => {
           let val = e.target.value.replace(/\D/g, '');
           if (val.length > 9) val = val.slice(0, 9);
           e.target.value = val;
+
+          if (val.length === 0 || validatePeruvianPhone(val).valid) {
+            clearPhoneErrorState(phoneInput, phoneError);
+          } else if (phoneError && !phoneError.classList.contains('hidden')) {
+            const res = validatePeruvianPhone(val);
+            if (!res.valid) {
+              setPhoneErrorState(phoneInput, phoneError, res.msg);
+            }
+          }
         });
       }
 
@@ -2257,14 +2309,9 @@
             return;
           }
 
-          if (!/^9\d{8}$/.test(phone)) {
-            alert('Por favor ingrese un número de celular peruano válido (debe tener 9 dígitos y comenzar con 9, ej. 987654321).');
-            if (phoneInput) phoneInput.focus();
-            return;
-          }
-
-          if (/^(\d)\1{8}$/.test(phone)) {
-            alert('Por favor ingrese un número de celular real y activo para reservar su cupo.');
+          const phoneCheck = validatePeruvianPhone(phone);
+          if (!phoneCheck.valid) {
+            setPhoneErrorState(phoneInput, phoneError, phoneCheck.msg);
             if (phoneInput) phoneInput.focus();
             return;
           }

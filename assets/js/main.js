@@ -334,13 +334,64 @@ function initFormHandling() {
   const closeModalBtn = document.getElementById('close-modal-btn');
   const confirmWhatsappBtn = document.getElementById('modal-whatsapp-confirm-btn');
   const phoneInput = document.getElementById('order-phone');
+  const phoneError = document.getElementById('order-phone-error');
 
-  // Format Peruvian phone number (9 digits only)
+  function validatePeruvianPhone(val) {
+    if (!val) return { valid: false, msg: 'Por favor complete su número de celular.' };
+    if (!val.startsWith('9')) return { valid: false, msg: '⚠️ El celular debe comenzar con el dígito 9 (Perú).' };
+    if (val.length !== 9) return { valid: false, msg: '⚠️ El celular debe tener 9 dígitos (faltan dígitos).' };
+    if (/^(\d)\1{8}$/.test(val)) return { valid: false, msg: '⚠️ Ingrese un número de celular real y activo.' };
+    return { valid: true };
+  }
+
+  function setPhoneErrorState(input, errorEl, msg) {
+    if (errorEl) {
+      errorEl.textContent = msg;
+      errorEl.classList.remove('hidden');
+    }
+    if (input) {
+      input.classList.add('border-rose-500', 'focus:ring-rose-500', 'focus:border-rose-500');
+      input.classList.remove('border-slate-300', 'focus:ring-emerald-500', 'focus:border-emerald-500');
+    }
+  }
+
+  function clearPhoneErrorState(input, errorEl) {
+    if (errorEl) {
+      errorEl.textContent = '';
+      errorEl.classList.add('hidden');
+    }
+    if (input) {
+      input.classList.remove('border-rose-500', 'focus:ring-rose-500', 'focus:border-rose-500');
+      input.classList.add('border-slate-300', 'focus:ring-emerald-500', 'focus:border-emerald-500');
+    }
+  }
+
+  // Format and validate Peruvian phone number in real-time
   if (phoneInput) {
+    phoneInput.addEventListener('blur', () => {
+      const val = phoneInput.value.trim();
+      if (val.length === 0) return;
+      const res = validatePeruvianPhone(val);
+      if (!res.valid) {
+        setPhoneErrorState(phoneInput, phoneError, res.msg);
+      } else {
+        clearPhoneErrorState(phoneInput, phoneError);
+      }
+    });
+
     phoneInput.addEventListener('input', (e) => {
       let value = e.target.value.replace(/\D/g, '');
       if (value.length > 9) value = value.slice(0, 9);
       e.target.value = value;
+
+      if (value.length === 0 || validatePeruvianPhone(value).valid) {
+        clearPhoneErrorState(phoneInput, phoneError);
+      } else if (phoneError && !phoneError.classList.contains('hidden')) {
+        const res = validatePeruvianPhone(value);
+        if (!res.valid) {
+          setPhoneErrorState(phoneInput, phoneError, res.msg);
+        }
+      }
     });
   }
 
@@ -416,14 +467,9 @@ function initFormHandling() {
       return;
     }
 
-    if (!/^9\d{8}$/.test(phone)) {
-      alert('Por favor ingrese un número de celular peruano válido (debe tener 9 dígitos y comenzar con 9, ej. 987654321).');
-      if (phoneInput) phoneInput.focus();
-      return;
-    }
-
-    if (/^(\d)\1{8}$/.test(phone)) {
-      alert('Por favor ingrese un número de celular real y activo para coordinar su envío contra entrega.');
+    const phoneCheck = validatePeruvianPhone(phone);
+    if (!phoneCheck.valid) {
+      setPhoneErrorState(phoneInput, phoneError, phoneCheck.msg);
       if (phoneInput) phoneInput.focus();
       return;
     }
