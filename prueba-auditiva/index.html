@@ -980,13 +980,37 @@
       const reportStatusMsg = document.getElementById('report-status-msg');
 
       if (reportLeadForm) {
+        const reportPhoneInput = document.getElementById('report-phone');
+        if (reportPhoneInput) {
+          reportPhoneInput.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.length > 9) val = val.slice(0, 9);
+            e.target.value = val;
+          });
+        }
+
         reportLeadForm.addEventListener('submit', async (e) => {
           e.preventDefault();
           const name = document.getElementById('report-name').value.trim();
           const phone = document.getElementById('report-phone').value.trim();
           const city = document.getElementById('report-city').value.trim();
 
-          if (!name || !phone || !city) return;
+          if (!name || !phone || !city) {
+            alert('Por favor complete todos los campos.');
+            return;
+          }
+
+          if (!/^9\d{8}$/.test(phone)) {
+            alert('Por favor ingrese un número de celular peruano válido (debe tener 9 dígitos y comenzar con 9, ej. 987654321).');
+            if (reportPhoneInput) reportPhoneInput.focus();
+            return;
+          }
+
+          if (/^(\d)\1{8}$/.test(phone)) {
+            alert('Por favor ingrese un número de celular real y activo para enviarle su informe.');
+            if (reportPhoneInput) reportPhoneInput.focus();
+            return;
+          }
 
           const origBtn = reportSubmitBtn.innerHTML;
           reportSubmitBtn.disabled = true;

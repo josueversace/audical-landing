@@ -416,8 +416,15 @@ function initFormHandling() {
       return;
     }
 
-    if (phone.length !== 9) {
-      alert('Por favor ingrese un número de celular peruano válido de 9 dígitos (ej. 987654321).');
+    if (!/^9\d{8}$/.test(phone)) {
+      alert('Por favor ingrese un número de celular peruano válido (debe tener 9 dígitos y comenzar con 9, ej. 987654321).');
+      if (phoneInput) phoneInput.focus();
+      return;
+    }
+
+    if (/^(\d)\1{8}$/.test(phone)) {
+      alert('Por favor ingrese un número de celular real y activo para coordinar su envío contra entrega.');
+      if (phoneInput) phoneInput.focus();
       return;
     }
 

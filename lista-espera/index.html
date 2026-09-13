@@ -2257,8 +2257,15 @@
             return;
           }
 
-          if (phone.length !== 9) {
-            alert('Por favor ingrese un celular de 9 dígitos válido.');
+          if (!/^9\d{8}$/.test(phone)) {
+            alert('Por favor ingrese un número de celular peruano válido (debe tener 9 dígitos y comenzar con 9, ej. 987654321).');
+            if (phoneInput) phoneInput.focus();
+            return;
+          }
+
+          if (/^(\d)\1{8}$/.test(phone)) {
+            alert('Por favor ingrese un número de celular real y activo para reservar su cupo.');
+            if (phoneInput) phoneInput.focus();
             return;
           }
 
