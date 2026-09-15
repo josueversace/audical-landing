@@ -2326,12 +2326,22 @@
             <span>Reservando cupo...</span>
           `;
 
+          // Meta Event ID para Deduplicación CAPI + Pixel
+          const eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+          const getMetaCookie = (k) => document.cookie.match('(^|;)\\s*' + k + '\\s*=\\s*([^;]+)')?.pop() || '';
+          const fbp = getMetaCookie('_fbp');
+          const fbc = getMetaCookie('_fbc');
+
           const payload = {
             nombre: name,
             whatsapp: phone,
             ciudad: city,
             fuente: 'landing_espera_familiar',
-            fecha: new Date().toISOString()
+            fecha: new Date().toISOString(),
+            event_id: eventId,
+            fbp: fbp,
+            fbc: fbc,
+            userAgent: navigator.userAgent
           };
 
           const N8N_WAITLIST_URL = 'https://n8n.conecta2.lat/webhook/audical-lista-espera';
@@ -2348,12 +2358,12 @@
             submitBtn.disabled = false;
             submitBtn.innerHTML = origBtnHtml;
 
-            // Meta Pixel Lead Event
+            // Meta Pixel Lead Event (con deduplicación por eventID)
             if (typeof window.fbq === 'function') {
               window.fbq('track', 'Lead', {
                 content_name: 'Lista de Espera Prelanzamiento OTC',
                 content_category: 'Hearing Aid Waitlist'
-              });
+              }, { eventID: eventId });
             }
 
             // Fill Modal

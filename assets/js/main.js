@@ -539,13 +539,17 @@ function initFormHandling() {
     }
 
     // 1. Enviar datos a n8n en segundo plano
+    const purchaseEventId = 'purch_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+    const getMetaCookie = (k) => document.cookie.match('(^|;)\\s*' + k + '\\s*=\\s*([^;]+)')?.pop() || '';
+    const fbp = getMetaCookie('_fbp');
+    const fbc = getMetaCookie('_fbc');
+
     const leadPayload = {
       name,
       phone,
       city,
       address,
       reference,
-      package: selectedPkg,
       packageText,
       price: packagePrice,
       landingVersion,
@@ -555,7 +559,10 @@ function initFormHandling() {
       timestamp: new Date().toISOString(),
       source: 'audivox.shop',
       url: window.location.href,
-      userAgent: navigator.userAgent
+      userAgent: navigator.userAgent,
+      event_id: purchaseEventId,
+      fbp: fbp,
+      fbc: fbc
     };
 
     const N8N_WEBHOOK_URL = 'https://n8n.conecta2.lat/webhook/audivox-nuevo-lead';
@@ -577,13 +584,13 @@ function initFormHandling() {
         submitBtn.innerHTML = originalBtnContent;
       }
 
-      // Meta Pixel Purchase Event
+      // Meta Pixel Purchase Event (con deduplicación)
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Purchase', {
           content_name: packageText,
           value: packagePrice,
           currency: 'PEN'
-        });
+        }, { eventID: purchaseEventId });
       }
 
       // Mostrar modal de éxito
