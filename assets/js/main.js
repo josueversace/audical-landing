@@ -539,7 +539,7 @@ function initFormHandling() {
     }
 
     // 1. Enviar datos a n8n en segundo plano
-    const purchaseEventId = 'purch_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+    const leadEventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
     const getMetaCookie = (k) => document.cookie.match('(^|;)\\s*' + k + '\\s*=\\s*([^;]+)')?.pop() || '';
     const fbp = getMetaCookie('_fbp');
     const fbc = getMetaCookie('_fbc');
@@ -560,12 +560,12 @@ function initFormHandling() {
       source: 'audivox.shop',
       url: window.location.href,
       userAgent: navigator.userAgent,
-      event_id: purchaseEventId,
+      event_id: leadEventId,
       fbp: fbp,
       fbc: fbc
     };
 
-    const N8N_WEBHOOK_URL = 'https://n8n.conecta2.lat/webhook/audivox-nuevo-lead';
+    const N8N_WEBHOOK_URL = 'https://n8n.conecta2.lat/webhook/audical-nuevo-lead';
 
     try {
       await fetch(N8N_WEBHOOK_URL, {
@@ -584,13 +584,12 @@ function initFormHandling() {
         submitBtn.innerHTML = originalBtnContent;
       }
 
-      // Meta Pixel Purchase Event (con deduplicación)
+      // Meta Pixel Lead Event (con deduplicación)
       if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Purchase', {
-          content_name: packageText,
-          value: packagePrice,
-          currency: 'PEN'
-        }, { eventID: purchaseEventId });
+        window.fbq('track', 'Lead', {
+          content_name: packageText || 'Audivox Micro-RIC 16X',
+          content_category: 'Hearing Aid Waitlist'
+        }, { eventID: leadEventId });
       }
 
       // Mostrar modal de éxito
