@@ -333,6 +333,30 @@ function initFormHandling() {
   const modal = document.getElementById('order-success-modal');
   const closeModalBtn = document.getElementById('close-modal-btn');
   const confirmWhatsappBtn = document.getElementById('modal-whatsapp-confirm-btn');
+
+  if (confirmWhatsappBtn) {
+    confirmWhatsappBtn.addEventListener('click', () => {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Contact', {
+          content_name: 'Confirmacion_Modal_WhatsApp',
+          content_category: 'WhatsApp Inbound'
+        });
+      }
+    });
+  }
+
+  const floatingWaBtn = document.querySelector('a[aria-label="Hablar por WhatsApp"]');
+  if (floatingWaBtn) {
+    floatingWaBtn.addEventListener('click', () => {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Contact', {
+          content_name: 'Boton_Flotante_WhatsApp',
+          content_category: 'WhatsApp Inbound'
+        });
+      }
+    });
+  }
+
   const phoneInput = document.getElementById('order-phone');
   const phoneError = document.getElementById('order-phone-error');
 
