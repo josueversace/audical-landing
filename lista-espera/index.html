@@ -2238,29 +2238,6 @@
       const phoneError = document.getElementById('waitlist-phone-error');
       const whatsappBtn = document.getElementById('modal-waitlist-whatsapp-btn');
 
-      if (whatsappBtn) {
-        whatsappBtn.addEventListener('click', () => {
-          if (typeof window.fbq === 'function') {
-            window.fbq('track', 'Contact', {
-              content_name: 'Confirmacion_Modal_WhatsApp',
-              content_category: 'WhatsApp Inbound'
-            });
-          }
-        });
-      }
-
-      const floatingWaBtn = document.querySelector('a[aria-label="Hablar por WhatsApp"]');
-      if (floatingWaBtn) {
-        floatingWaBtn.addEventListener('click', () => {
-          if (typeof window.fbq === 'function') {
-            window.fbq('track', 'Contact', {
-              content_name: 'Boton_Flotante_WhatsApp',
-              content_category: 'WhatsApp Inbound'
-            });
-          }
-        });
-      }
-
       function validatePeruvianPhone(val) {
         if (!val) return { valid: false, msg: 'Por favor complete su número de celular.' };
         if (!val.startsWith('9')) return { valid: false, msg: '⚠️ El celular debe comenzar con el dígito 9 (Perú).' };

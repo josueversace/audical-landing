@@ -333,28 +333,32 @@ function initFormHandling() {
   const modal = document.getElementById('order-success-modal');
   const closeModalBtn = document.getElementById('close-modal-btn');
   const confirmWhatsappBtn = document.getElementById('modal-whatsapp-confirm-btn');
+  const waitlistWhatsappBtn = document.getElementById('modal-waitlist-whatsapp-btn');
+  const floatingWaBtn = document.querySelector('a[aria-label="Hablar por WhatsApp"]');
 
-  if (confirmWhatsappBtn) {
-    confirmWhatsappBtn.addEventListener('click', () => {
-      if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Contact', {
-          content_name: 'Confirmacion_Modal_WhatsApp',
-          content_category: 'WhatsApp Inbound'
-        });
-      }
-    });
+  let lastContactTime = 0;
+  function trackContact(contentName) {
+    const now = Date.now();
+    if (now - lastContactTime < 2000) return; // Previene eventos duplicados en ventana de 2000ms
+    lastContactTime = now;
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'Contact', {
+        content_name: contentName,
+        content_category: 'WhatsApp Inbound'
+      });
+    }
   }
 
-  const floatingWaBtn = document.querySelector('a[aria-label="Hablar por WhatsApp"]');
+  if (confirmWhatsappBtn) {
+    confirmWhatsappBtn.addEventListener('click', () => trackContact('Confirmacion_Modal_WhatsApp'));
+  }
+
+  if (waitlistWhatsappBtn) {
+    waitlistWhatsappBtn.addEventListener('click', () => trackContact('Confirmacion_Modal_WhatsApp'));
+  }
+
   if (floatingWaBtn) {
-    floatingWaBtn.addEventListener('click', () => {
-      if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Contact', {
-          content_name: 'Boton_Flotante_WhatsApp',
-          content_category: 'WhatsApp Inbound'
-        });
-      }
-    });
+    floatingWaBtn.addEventListener('click', () => trackContact('Boton_Flotante_WhatsApp'));
   }
 
   const phoneInput = document.getElementById('order-phone');
