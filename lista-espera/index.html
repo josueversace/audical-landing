@@ -2491,7 +2491,7 @@
           const phoneErr = document.getElementById('quiz-phone-error');
           const submitBtn = document.getElementById('quiz-lead-submit-btn');
 
-          if (!phone.startsWith('9') || phone.length !== 9 || /^(\d){8}$/.test(phone)) {
+          if (!phone.startsWith('9') || phone.length !== 9 || /^(\d)\1{8}$/.test(phone)) {
             if (phoneErr) {
               phoneErr.textContent = '⚠️ Ingresa un celular peruano válido de 9 dígitos (empieza en 9).';
               phoneErr.classList.remove('hidden');
@@ -2506,7 +2506,7 @@
           submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin inline-block mr-2" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg><span>Guardando cupo...</span>';
 
           const leadEventId = 'quiz_lead_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
-          const getMetaCookie = (k) => document.cookie.match('(^|;)\s*' + k + '\s*=\s*([^;]+)')?.pop() || '';
+          const getMetaCookie = (k) => document.cookie.match(new RegExp('(^|;)\\s*' + k + '\\s*=\\s*([^;]+)'))?.[2] || '';
           const payload = {
             nombre: name,
             phone: phone,
@@ -2521,6 +2521,7 @@
             event_id: leadEventId,
             fbp: getMetaCookie('_fbp'),
             fbc: getMetaCookie('_fbc'),
+            userAgent: navigator.userAgent || '',
             quiz: {
               q1: quizAnswers.q1Label,
               q2: quizAnswers.q2Label,
@@ -2544,10 +2545,8 @@
 
             if (typeof window.fbq === 'function') {
               window.fbq('track', 'Lead', {
-                content_name: productName,
-                content_category: 'Quiz Triaje — Hearing Aid',
-                value: isBinaural ? 1990 : 1290,
-                currency: 'PEN'
+                content_name: 'Lista de Espera Prelanzamiento Micro-RIC 16X',
+                content_category: 'Hearing Aid Waitlist'
               }, { eventID: leadEventId });
             }
 
