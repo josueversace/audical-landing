@@ -1758,7 +1758,7 @@
        12. MAIN WAITLIST & PRE-LAUNCH LEAD CAPTURE FORM SECTION
        ========================================================================= -->
   <!-- =========================================================================
-       12. MAIN AUDITORY TRIAGE & LEAD QUALIFICATION SECTION (Replaces Old Form)
+       12. MAIN AUDITORY TRIAJE & LEAD QUALIFICATION SECTION (Replaces Old Form)
        ========================================================================= -->
   <section id="lista-espera" class="py-12 sm:py-20 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white relative overflow-hidden">
     
@@ -1770,13 +1770,13 @@
       <!-- Section Heading -->
       <div class="text-center space-y-2 mb-6 sm:mb-8">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20 text-xs font-bold uppercase tracking-wider">
-          <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i> Triage Clínico Gratuito
+          <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i> Triaje Auditivo Gratuito
         </span>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-          Test de Orientación Auditiva & Preventa
+          Evaluación y Reserva con 50% de Descuento
         </h2>
         <p class="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-          Evalúa el caso de tu familiar en 45 segundos y asegura tu cupo con 50% de descuento.
+          Responde las 4 preguntas para saber si Audivox es adecuado para tu familiar y asegurar su cupo.
         </p>
       </div>
 
@@ -1824,7 +1824,7 @@
               4
             </div>
             <div>
-              <p class="font-extrabold text-xs sm:text-sm text-slate-900 leading-tight">Preguntas de triage clínico</p>
+              <p class="font-extrabold text-xs sm:text-sm text-slate-900 leading-tight">Preguntas de triaje clínico</p>
               <p class="text-[11px] text-slate-600 leading-tight mt-0.5">Diseñadas por especialistas en audiología para segmentar tu caso con precisión.</p>
             </div>
           </div>
@@ -2019,14 +2019,13 @@
         <div id="quiz-screen-6-result" class="quiz-screen hidden space-y-5">
           <div class="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl p-4 border border-teal-200 space-y-2">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-              <span class="text-[11px] font-bold text-teal-800 uppercase tracking-wider">Resultado del Triage Clínico</span>
+              <span class="text-[11px] font-bold text-teal-800 uppercase tracking-wider">Resultado del Triaje Auditivo</span>
             </div>
             <h3 id="quiz-result-title" class="text-base sm:text-lg font-black text-slate-950 leading-tight">
-              Indicios de pérdida auditiva moderada detectada
+              Tu familiar presenta indicios de pérdida auditiva moderada
             </h3>
             <p id="quiz-result-desc" class="text-xs text-slate-600 leading-relaxed">
-              El procesador digital de 16 canales WDRC está diseñado específicamente para compensar pérdidas auditivas de grado leve a moderado en el hogar. Tu familiar califica para el programa de preventa con 50% de descuento.
+              Los audífonos Audivox Micro-RIC están diseñados precisamente para este nivel de audición. Le ayudarán a recuperar la nitidez en conversaciones familiares y lugares con ruido. Tu familiar califica para el precio especial de preventa.
             </p>
           </div>
 
@@ -2035,7 +2034,7 @@
             <div>
               <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Sistema Recomendado</span>
               <p id="quiz-product-name" class="font-extrabold text-xs sm:text-sm text-slate-900">Audivox Micro-RIC 16X — Binaural</p>
-              <p class="text-[11px] text-emerald-700 font-semibold mt-0.5">✓ 50% Descuento de Prelanzamiento</p>
+              <p id="quiz-discount-badge" class="text-[11px] text-emerald-700 font-semibold mt-0.5">✓ 50% Descuento de Prelanzamiento</p>
             </div>
             <div class="text-right flex-shrink-0">
               <span id="quiz-orig-price" class="text-xs text-slate-400 line-through block">S/ 3,990</span>
@@ -2047,14 +2046,14 @@
           <form id="quiz-lead-form" class="space-y-3.5 pt-1">
             <div>
               <label for="quiz-lead-name" class="text-[11px] font-bold text-slate-700 block mb-1">
-                Nombre y Apellido del Solicitante <span class="text-teal-600">*</span>
+                Nombre y apellido <span class="text-teal-600">*</span>
               </label>
               <input type="text" id="quiz-lead-name" required placeholder="Ej. Carlos Mendoza Ramos" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-xs outline-none transition-all placeholder:text-slate-400 bg-white font-medium">
             </div>
 
             <div>
               <label for="quiz-lead-phone" class="text-[11px] font-bold text-slate-700 block mb-1">
-                Celular / WhatsApp (9 dígitos) <span class="text-teal-600">*</span>
+                Celular o WhatsApp (9 dígitos) <span class="text-teal-600">*</span>
               </label>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-xs font-bold text-slate-600 pointer-events-none">🇵🇪 +51</span>
@@ -2065,14 +2064,14 @@
 
             <div>
               <label for="quiz-lead-city" class="text-[11px] font-bold text-slate-700 block mb-1">
-                Ciudad de Entrega <span class="text-teal-600">*</span>
+                Ciudad (Lima o Provincias) <span class="text-teal-600">*</span>
               </label>
-              <input type="text" id="quiz-lead-city" required placeholder="Ej. Lima, Arequipa, Trujillo, Cusco" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-xs outline-none transition-all placeholder:text-slate-400 bg-white font-medium">
+              <input type="text" id="quiz-lead-city" required placeholder="Ej. Lima, Arequipa, Trujillo..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-xs outline-none transition-all placeholder:text-slate-400 bg-white font-medium">
             </div>
 
             <button type="submit" id="quiz-lead-submit-btn" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-extrabold text-sm shadow-lg shadow-teal-600/30 flex items-center justify-center gap-2 transition-all cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-              <span>Asegurar Mi Cupo con Descuento (50% OFF)</span>
+              <span>Reservar Cupo con 50% de Descuento</span>
             </button>
             <p class="text-[10px] text-slate-400 text-center font-medium">Sin pago por adelantado · Pagas al recibir en tu domicilio</p>
           </form>
@@ -2443,7 +2442,7 @@
         } else {
           showResult();
         }
-      }, 2200);
+      }, 1300);
     }
 
     function showResult() {
@@ -2452,11 +2451,11 @@
       const origPrice = isBinaural ? 'S/ 3,990' : 'S/ 2,190';
       const finalPrice = isBinaural ? 'S/ 1,990' : 'S/ 1,290';
 
-      let resultTitle = 'Indicios de pérdida auditiva moderada detectada';
-      let resultDesc = 'El procesador digital de 16 canales WDRC está diseñado específicamente para compensar pérdidas auditivas de grado leve a moderado en el hogar. Tu familiar califica para el programa de preventa con 50% de descuento.';
+      let resultTitle = 'Tu familiar presenta indicios de pérdida auditiva moderada';
+      let resultDesc = 'Los audífonos Audivox Micro-RIC están diseñados precisamente para este nivel de audición. Le ayudarán a recuperar la nitidez en conversaciones familiares y lugares con ruido. Tu familiar califica para el precio especial de preventa.';
       if (quizAnswers.q2 === 'A') {
-        resultTitle = 'Indicios de pérdida auditiva leve detectada';
-        resultDesc = 'El procesador digital de 16 canales amplifica con precisión las frecuencias de la voz, especialmente para televisión y radio. Tu familiar califica para el precio especial de preventa.';
+        resultTitle = 'Tu familiar presenta indicios de pérdida auditiva leve';
+        resultDesc = 'Este nivel es muy común. Los audífonos Audivox le permitirán escuchar la televisión y conversar con total claridad sin tener que subir tanto el volumen ni esforzarse. Tu familiar califica para el precio especial de preventa.';
       }
 
       const el = function(id) { return document.getElementById(id); };
@@ -2465,6 +2464,7 @@
       if (el('quiz-product-name')) el('quiz-product-name').textContent = productName;
       if (el('quiz-orig-price')) el('quiz-orig-price').textContent = origPrice;
       if (el('quiz-final-price')) el('quiz-final-price').textContent = finalPrice;
+      if (el('quiz-discount-badge')) el('quiz-discount-badge').textContent = isBinaural ? '✓ 50% Descuento de Prelanzamiento' : '✓ Precio Especial de Prelanzamiento';
 
       quizGoToScreen('quiz-screen-6-result');
 
@@ -2513,7 +2513,7 @@
             ciudad: city,
             packageText: productName,
             price: finalPrice,
-            landingVersion: 'Quiz Triage — Seccion Principal',
+            landingVersion: 'Quiz Triaje — Seccion Principal',
             landingUrl: window.location.href,
             referrer: document.referrer || 'Directo',
             timestamp: new Date().toISOString(),
@@ -2545,7 +2545,7 @@
             if (typeof window.fbq === 'function') {
               window.fbq('track', 'Lead', {
                 content_name: productName,
-                content_category: 'Quiz Triage — Hearing Aid',
+                content_category: 'Quiz Triaje — Hearing Aid',
                 value: isBinaural ? 1990 : 1290,
                 currency: 'PEN'
               }, { eventID: leadEventId });
