@@ -1990,7 +1990,7 @@
           <div class="space-y-1.5">
             <p class="text-[11px] font-bold text-teal-700 uppercase tracking-widest">Pregunta 4 de 4</p>
             <h3 class="text-lg sm:text-xl font-extrabold text-slate-950 leading-tight">¿La dificultad auditiva se presenta en ambos oídos o principalmente en uno?</h3>
-            <p class="text-xs text-slate-500">Esto define el sistema recomendado y el precio exacto de tu cupo.</p>
+            <p class="text-xs text-slate-500">Esto define el modelo recomendado y el precio exacto de tu cupo.</p>
           </div>
           <div class="space-y-3" id="q4-options">
             <button type="button" onclick="quizSelectOption(4,'A','En ambos oídos (desequilibrio o pérdida general)')" class="quiz-option w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-teal-400 hover:bg-teal-50 transition-all group cursor-pointer" data-q="4" data-v="A">
@@ -1998,7 +1998,7 @@
                 <div class="w-8 h-8 rounded-xl border-2 border-slate-300 group-hover:border-teal-500 bg-white flex items-center justify-center font-black text-sm text-slate-500 group-hover:text-teal-600 transition-colors flex-shrink-0 quiz-opt-indicator mt-0.5">A</div>
                 <div>
                   <span class="font-semibold text-sm text-slate-800 block">En ambos oídos <span class="text-slate-400 font-normal">(desequilibrio o pérdida bilateral)</span></span>
-                  <span class="text-[11px] text-teal-700 font-bold">→ Sistema Binaural (2 audífonos) · S/ 1,990</span>
+                  <span class="text-[11px] text-teal-700 font-bold">→ Modelo Binaural (2 audífonos) · S/ 1,990</span>
                 </div>
               </div>
             </button>
@@ -2007,7 +2007,7 @@
                 <div class="w-8 h-8 rounded-xl border-2 border-slate-300 group-hover:border-teal-500 bg-white flex items-center justify-center font-black text-sm text-slate-500 group-hover:text-teal-600 transition-colors flex-shrink-0 quiz-opt-indicator mt-0.5">B</div>
                 <div>
                   <span class="font-semibold text-sm text-slate-800 block">Principalmente en un solo oído</span>
-                  <span class="text-[11px] text-teal-700 font-bold">→ Sistema Monoaural (1 audífono) · S/ 1,290</span>
+                  <span class="text-[11px] text-teal-700 font-bold">→ Modelo Monoaural (1 audífono) · S/ 1,290</span>
                 </div>
               </div>
             </button>
@@ -2090,7 +2090,7 @@
           <!-- Package Card -->
           <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-between gap-3">
             <div>
-              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Sistema Recomendado</span>
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Modelo Recomendado</span>
               <p id="quiz-product-name" class="font-extrabold text-xs sm:text-sm text-slate-900">Audivox Micro-RIC 16X — Binaural</p>
               <p id="quiz-discount-badge" class="text-[11px] text-emerald-700 font-semibold mt-0.5">✓ 50% Descuento de Prelanzamiento</p>
             </div>
@@ -2154,16 +2154,16 @@
             </div>
 
             <!-- Caja limpia de Conteo -->
-            <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 w-full max-w-sm space-y-2 mt-2">
-              <p class="text-xs font-bold text-slate-600">
+            <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 w-full max-w-sm space-y-2 mt-2">
+              <p class="text-xs sm:text-sm font-semibold text-slate-600">
                 Conectando con tu asesor por WhatsApp en...
               </p>
-              <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-600 text-white font-mono font-black text-2xl shadow-md shadow-emerald-600/30" id="quiz-countdown-num">
-                3
+              <div id="quiz-countdown-num" class="font-mono font-black text-4xl sm:text-5xl text-rose-600 py-1 select-none">
+                5
               </div>
               <div class="pt-2 border-t border-slate-200/60">
                 <p class="text-[11px] text-slate-500">
-                  (Si no abre automáticamente, <a id="quiz-whatsapp-link" href="#" class="font-bold text-teal-700 hover:text-teal-800 underline underline-offset-2 transition-colors cursor-pointer">haz clic aquí para ir</a>)
+                  (Si no abre automáticamente, <a id="quiz-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="font-bold text-teal-700 hover:text-teal-800 underline underline-offset-2 transition-colors cursor-pointer">haz clic aquí para ir</a>)
                 </p>
               </div>
             </div>
@@ -2635,7 +2635,7 @@
               `👤 *Nombre:* ${name}\n` +
               `📱 *Celular:* ${phone}\n` +
               `📍 *Ciudad:* ${city}\n` +
-              `🦻 *Sistema:* ${productName}\n` +
+              `🦻 *Modelo:* ${productName}\n` +
               `💰 *Precio Especial:* ${finalPrice} (50% Descuento)\n\n` +
               `Deseo coordinar la confirmación de mi cupo y los detalles de entrega.`
             );
@@ -2659,7 +2659,7 @@
 
             quizGoToScreen('quiz-screen-7');
 
-            let secondsLeft = 3;
+            let secondsLeft = 5;
             const countEl = el('quiz-countdown-num');
             if (countEl) countEl.textContent = secondsLeft;
 
@@ -2673,7 +2673,7 @@
               if (secondsLeft <= 0) {
                 clearInterval(window._quizCountdownTimer);
                 window._quizCountdownTimer = null;
-                window.location.href = waUrl;
+                window.open(waUrl, '_blank');
               }
             }, 1000);
           }
