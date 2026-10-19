@@ -2589,23 +2589,12 @@
             if (el('quiz-trans-product')) el('quiz-trans-product').textContent = shortPkg;
             
             const waLink = el('quiz-whatsapp-link');
-
-            // Pre-open blank tab NOW (inside trusted click event) to avoid popup blockers
-            const waWin = window.open('', '_blank');
-
             if (waLink) {
               waLink.href = waUrl;
-              waLink.onclick = function(e) {
-                e.preventDefault();
+              waLink.onclick = function() {
                 if (window._quizCountdownTimer) {
                   clearInterval(window._quizCountdownTimer);
                   window._quizCountdownTimer = null;
-                }
-                if (waWin && !waWin.closed) {
-                  waWin.location.href = waUrl;
-                  waWin.focus();
-                } else {
-                  window.open(waUrl, '_blank');
                 }
               };
             }
@@ -2626,12 +2615,7 @@
               if (secondsLeft <= 0) {
                 clearInterval(window._quizCountdownTimer);
                 window._quizCountdownTimer = null;
-                if (waWin && !waWin.closed) {
-                  waWin.location.href = waUrl;
-                  waWin.focus();
-                } else {
-                  window.open(waUrl, '_blank');
-                }
+                window.location.href = waUrl;
               }
             }, 1000);
           }
