@@ -2105,7 +2105,7 @@
               </div>
               <div class="pt-2 border-t border-slate-200/60">
                 <p class="text-[11px] text-slate-500">
-                  (Si no abre automáticamente, <a id="quiz-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="font-bold text-teal-700 hover:text-teal-800 underline underline-offset-2 transition-colors cursor-pointer">haz clic aquí para ir</a>)
+                  (Si no abre automáticamente, <a id="quiz-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="font-bold text-teal-700 hover:text-teal-800 underline underline-offset-2 transition-colors cursor-pointer">haz clic aquí</a>)
                 </p>
               </div>
             </div>
@@ -2589,19 +2589,30 @@
             if (el('quiz-trans-product')) el('quiz-trans-product').textContent = shortPkg;
             
             const waLink = el('quiz-whatsapp-link');
+
+            // Pre-open blank tab NOW (inside trusted click event) to avoid popup blockers
+            const waWin = window.open('', '_blank');
+
             if (waLink) {
               waLink.href = waUrl;
-              waLink.onclick = function() {
+              waLink.onclick = function(e) {
+                e.preventDefault();
                 if (window._quizCountdownTimer) {
                   clearInterval(window._quizCountdownTimer);
                   window._quizCountdownTimer = null;
+                }
+                if (waWin && !waWin.closed) {
+                  waWin.location.href = waUrl;
+                  waWin.focus();
+                } else {
+                  window.open(waUrl, '_blank');
                 }
               };
             }
 
             quizGoToScreen('quiz-screen-7');
 
-            let secondsLeft = 5;
+            let secondsLeft = 4;
             const countEl = el('quiz-countdown-num');
             if (countEl) countEl.textContent = secondsLeft;
 
@@ -2615,7 +2626,12 @@
               if (secondsLeft <= 0) {
                 clearInterval(window._quizCountdownTimer);
                 window._quizCountdownTimer = null;
-                window.open(waUrl, '_blank');
+                if (waWin && !waWin.closed) {
+                  waWin.location.href = waUrl;
+                  waWin.focus();
+                } else {
+                  window.open(waUrl, '_blank');
+                }
               }
             }, 1000);
           }
